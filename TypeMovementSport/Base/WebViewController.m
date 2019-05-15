@@ -7,7 +7,6 @@
 //
 
 #import "WebViewController.h"
-#import "WebViewJavascriptBridge.h"
 
 @interface WebViewController () <WKNavigationDelegate>
 
@@ -58,30 +57,6 @@
     _webView.navigationDelegate = self;
     _webView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_webView];
-    
-    //设置第三方Bridge是否可用
-    [WebViewJavascriptBridge enableLogging];
-    
-    //关联webView和bridge
-    WebViewJavascriptBridge * _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
-    
-    [_bridge setWebViewDelegate:self];
-    id data = @{@"name" : @"xiaoxiao"};
-    [_bridge callHandler:@"ocCallJSFunction" data:data responseCallback:^(id response) {
-        NSLog(@"这里是OC调用JS成功后，JS回调的参数:%@", response);
-        
-    }];
-    
-    //js给oc传值.'passValue'为双方自定义的统一方法名；'data'为JS传过来的值；'responseCallback'为OC收到值后给JS返回的回调
-    [_bridge registerHandler:@"passValue" handler:^(id data, WVJBResponseCallback responseCallback) {
-        
-        //打印js传过来的值
-        NSLog(@"%@", data);
-        
-        //返回给js的值
-        responseCallback(@"收到了");
-    }];
-    
     
     [self setNavBarColor:[UIColor whiteColor]];
     
