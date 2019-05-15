@@ -46,6 +46,6 @@ pod 'HyphenateLite'
 # 崩溃日志收集
 pod 'Bugly'
 
-pod 'WebViewJavascriptBridge'
+#pod 'WebViewJavascriptBridge'
 
 end

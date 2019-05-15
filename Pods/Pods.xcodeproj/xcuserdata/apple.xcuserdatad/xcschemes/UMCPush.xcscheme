@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7852CF2A25694414265DFCC618B45C08"
+               BlueprintIdentifier = "60367A140396AE7490D1317D22D68C3B"
                BuildableName = "UMCPush"
                BlueprintName = "UMCPush"
                ReferencedContainer = "container:Pods.xcodeproj">
