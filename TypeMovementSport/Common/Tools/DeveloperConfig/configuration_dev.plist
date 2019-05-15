@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OSSEndPoint</key>
+	<string>http://img.51gosports.com</string>
+	<key>OSSBucketHostId</key>
+	<string>oss-cn-beijing.aliyuncs.com</string>
+	<key>OSSAccessKey</key>
+	<string>Q8wihoXLtmDYTkLQ</string>
+	<key>OSSSecretKey</key>
+	<string>MmhyJ8XDpg4Mt14G4x517W0s32vfxt</string>
+	<key>OSSBucketName</key>
+	<string>gosportsbj</string>
+	<key>APPID</key>
+	<string>1193107445</string>
+	<key>UMENG_APPKEY</key>
+	<string>5a177c0ca40fa32a19000220</string>
+	<key>UMENG_SECRET</key>
+	<string>kfaijeswwa4y3knuqcgy2wxis89byy0w</string>
+	<key>WEICHAT_APPID</key>
+	<string>wxfd25b83147a884e8</string>
+	<key>WEICHAT_SECRET</key>
+	<string>48af4821e6432a71e1dfd757cfdbc849</string>
+	<key>SINA_APPKEY</key>
+	<string>2567951274</string>
+	<key>KJpushAppKey</key>
+	<string>eaf1fd1f990dd4361b6e1978960720b3</string>
+	<key>KJpusIsProduction</key>
+	<false/>
+	<key>EM_AppKey</key>
+	<string>1195180619177549#xingdong</string>
+	<key>Bugly_APPID</key>
+	<string>16031a1716</string>
+	<key>Bugly_APPKEY</key>
+	<string>29cdf32c-defb-4797-ac28-1264ba877aa1</string>
+</dict>
+</plist>

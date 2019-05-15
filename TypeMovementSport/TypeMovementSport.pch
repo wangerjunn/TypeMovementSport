@@ -1,0 +1,36 @@
+//
+//  TypeMovementSport.pch
+//  TypeMovementSport
+//
+//  Created by XDH on 2018/8/22.
+//  Copyright © 2018年 XDH. All rights reserved.
+//
+
+#ifndef TypeMovementSport_pch
+#define TypeMovementSport_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+
+#import "UIView+AdjustLayoutWithKeyboard.h"
+#import "WordLimit.h"
+#import "InterfaceList.h"
+#import "ParamFile.h"
+#import "CustomAlertView.h"
+#import "NSObject+isNotEmpty.h"
+
+#endif
+
+#endif
+
+
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"---%@---%s",NSStringFromClass([self class]),__func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+
+#endif /* TypeMovementSport_pch */

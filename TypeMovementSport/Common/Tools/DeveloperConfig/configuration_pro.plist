@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>OSSEndPoint</key>
+	<string>http://img.xingdongsport.com</string>
+	<key>OSSBucketHostId</key>
+	<string>oss-cn-beijing.aliyuncs.com</string>
+	<key>OSSAccessKey</key>
+	<string>LTAIiIb32yfV0H3A</string>
+	<key>OSSSecretKey</key>
+	<string>P5htIVbMsvg3Vn56Q0eUuJSbkMdhXL</string>
+	<key>OSSBucketName</key>
+	<string>xingdonggo</string>
+	<key>APPID</key>
+	<string>1193107445</string>
+	<key>UMENG_APPKEY</key>
+	<string>5a177c0ca40fa32a19000220</string>
+	<key>UMENG_SECRET</key>
+	<string>kfaijeswwa4y3knuqcgy2wxis89byy0w</string>
+	<key>WEICHAT_APPID</key>
+	<string>wxfd25b83147a884e8</string>
+	<key>WEICHAT_SECRET</key>
+	<string>48af4821e6432a71e1dfd757cfdbc849</string>
+	<key>SINA_APPKEY</key>
+	<string>2567951274</string>
+	<key>KJpushAppKey</key>
+	<string>e57cd728ef263bd8f4f735ea</string>
+	<key>KJpusIsProduction</key>
+	<true/>
+	<key>EM_AppKey</key>
+	<string>1195180619177549#xingdong</string>
+	<key>Bugly_APPID</key>
+	<string>16031a1716</string>
+	<key>Bugly_APPKEY</key>
+	<string>29cdf32c-defb-4797-ac28-1264ba877aa1</string>
+</dict>
+</plist>

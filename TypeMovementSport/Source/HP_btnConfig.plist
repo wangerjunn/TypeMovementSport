@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>国职认证</string>
+		<key>icon</key>
+		<string>HP_ cerQuery</string>
+		<key>action</key>
+		<string>certificateQuery</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>成绩查询</string>
+		<key>icon</key>
+		<string>HP_gradeQuery</string>
+		<key>action</key>
+		<string>gradeQuery</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>进阶课程</string>
+		<key>icon</key>
+		<string>HP_elecCard</string>
+		<key>action</key>
+		<string>showIncreaseVideo</string>
+	</dict>
+    <dict>
+        <key>title</key>
+        <string>增值培训</string>
+        <key>icon</key>
+        <string>HP_increaseTrain</string>
+        <key>action</key>
+        <string>increaseTrain</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>我要求职</string>
+        <key>icon</key>
+        <string>HP_job</string>
+        <key>action</key>
+        <string>wantToJob</string>
+    </dict>
+    <dict>
+        <key>title</key>
+        <string>我要招聘</string>
+        <key>icon</key>
+        <string>HP_ recruit</string>
+        <key>action</key>
+        <string>wantToRecruit</string>
+    </dict>
+</array>
+</plist>
