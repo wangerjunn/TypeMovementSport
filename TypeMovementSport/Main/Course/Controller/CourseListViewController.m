@@ -97,7 +97,7 @@
     [self.view addSubview:img_purchase];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickPurchase)];
     [img_purchase addGestureRecognizer:tap];
-    if (_questionModel.price == 0) {
+    if (_questionModel.price == 0 || _questionModel.expireTime > 0) {
         img_purchase.hidden = YES;
     }
 }
