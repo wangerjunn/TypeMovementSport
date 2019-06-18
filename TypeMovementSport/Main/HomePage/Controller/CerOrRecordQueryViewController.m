@@ -24,6 +24,7 @@ static NSString *kIsMultiple = @"isMultiple";
 
 //model
 #import "UserModel.h"
+static int countdown = 60;
 
 @interface CerOrRecordQueryViewController () <UITextFieldDelegate>{
     UITextField *nameField;
@@ -35,7 +36,7 @@ static NSString *kIsMultiple = @"isMultiple";
     UILabel *vertifiCodeLabel;
     UIButton *getVertifiCodeBtn;
     NSNumber *duration;
-    NSTimer *waitTimer;
+    NSTimer *_timer;
     NSTimeInterval currentTime;
     int code;
     int randomNumber;
@@ -217,14 +218,57 @@ static NSString *kIsMultiple = @"isMultiple";
 #pragma mark -- 获取验证码
 - (void)getVertifiCode {
     
-    [self.view resignFirstResponder];
     [self.view endEditing:YES];
-    if(phoneField.text.length != 11){
-        [[CustomAlertView shareCustomAlertView] showTitle:nil content:@"手机号码不正确" buttonTitle:nil block:nil];
+    
+    if (phoneField.text.length == 0) {
+        [[CustomAlertView shareCustomAlertView] showTitle:nil content:@"请填写手机号码" buttonTitle:nil block:nil];
         return;
     }
+    if (phoneField.text.length < 11) {
+        [[CustomAlertView shareCustomAlertView] showTitle:nil content:@"手机号码位数错误" buttonTitle:nil block:nil];
+        return;
+    }
+    
+    TO_WEAK(self, weakSelf);
+    
+    [WebRequest PostWithUrlString:kSendCode parms:@{@"phone":phoneField.text}  viewControll:nil success:^(NSDictionary *dict, NSString *remindMsg) {
+        
+        TO_STRONG(weakSelf, strongSelf);
+        if ([remindMsg integerValue] == 999) {
+            if (!strongSelf->_timer) {
+                strongSelf->_timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                                      target:self
+                                                                    selector:@selector(updateCountdown)
+                                                                    userInfo:nil
+                                                                     repeats:YES];
+            }
+            strongSelf-> getVertifiCodeBtn.userInteractionEnabled = NO;
+            strongSelf-> getVertifiCodeBtn.backgroundColor = k210Color;
+            [strongSelf->_timer fire];
+        }else{
+            [[CustomAlertView shareCustomAlertView] showTitle:nil content:dict[kMessage] buttonTitle:nil block:nil];
+        }
+    } failed:^(NSError *error) {
+        
+    }];
 }
 
+#pragma mark -- 更新倒计时
+- (void)updateCountdown {
+    countdown -= 1;
+    
+    NSString *countdownCon = [NSString stringWithFormat:@"%2d秒后获取",countdown];
+    [getVertifiCodeBtn setTitle:countdownCon forState:UIControlStateNormal];
+    
+    if (countdown == 0) {
+         getVertifiCodeBtn.userInteractionEnabled = YES;
+         getVertifiCodeBtn.backgroundColor = kOrangeColor;
+        [getVertifiCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        countdown = 60;
+        [_timer invalidate];
+        _timer = nil;
+    }
+}
 
 #pragma mark -- 去登录
 - (void)displayLoginView {

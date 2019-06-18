@@ -15,7 +15,7 @@
 //vc
 #import "CourseListViewController.h"
 #import "BaseNavigationViewController.h"
-
+#import "ActOpeListViewController.h"
 
 //model
 #import "QuestionModel.h"
@@ -266,21 +266,31 @@
     if (!model.isOnline) {
         return;
     }
-    CourseListViewController *courseList = [[CourseListViewController alloc] init];
-    courseList.hidesBottomBarWhenPushed = YES;
-    courseList.videoTypeId = model.id;
-    courseList.viewTitle = model.name;
-    courseList.totalPrice = model.price/100;
-    courseList.EnglishTitle = @"Value Added";
-    courseList.videoEnum = Course_increaseVideo;
-    [courseList setModel:model];
-    TO_WEAK(self, weakSelf);
-    courseList.PaySuccessCallbackBlock = ^{
-        [weakSelf getVideoDataList];
-    };
-//    BaseNavigationViewController *baseNav = [[BaseNavigationViewController alloc] initWithRootViewController:courseList];
-    [self.viewController.navigationController pushViewController:courseList animated:YES];
-//    [self.viewController presentViewController:baseNav animated:YES completion:nil];
+    
+    if ([model.videoList isNotEmpty]) {
+        //不为空
+        CourseListViewController *courseList = [[CourseListViewController alloc] init];
+        courseList.hidesBottomBarWhenPushed = YES;
+        courseList.videoTypeId = model.id;
+        courseList.viewTitle = model.name;
+        courseList.totalPrice = model.price/100;
+        courseList.EnglishTitle = @"Value Added";
+        courseList.videoEnum = Course_increaseVideo;
+        [courseList setModel:model];
+        TO_WEAK(self, weakSelf);
+        courseList.PaySuccessCallbackBlock = ^{
+            [weakSelf getVideoDataList];
+        };
+        [self.viewController.navigationController pushViewController:courseList animated:YES];
+    }else {
+        ActOpeListViewController *actOpeList = [[ActOpeListViewController alloc] init];
+        actOpeList.hidesBottomBarWhenPushed = YES;
+        actOpeList.videoTypeId = model.id;
+        actOpeList.viewTitle = model.name;
+        actOpeList.videoEnum = Course_actOpeVideo;
+        [self.viewController.navigationController pushViewController:actOpeList animated:YES];
+    }
+        
 }
 
 #pragma mark -- 全部品类

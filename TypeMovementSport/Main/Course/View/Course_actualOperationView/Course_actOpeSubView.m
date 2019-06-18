@@ -118,28 +118,30 @@
         return;
     }
     
-    ActOpeListViewController *actOpeList = [[ActOpeListViewController alloc] init];
-    actOpeList.hidesBottomBarWhenPushed = YES;
-    actOpeList.videoTypeId = model.id;
-    actOpeList.viewTitle = model.name;
-    actOpeList.videoEnum = Course_actOpeVideo;
-//    actOpeList.totalPrice = model.price/100;
-   
-    [self.viewController.navigationController pushViewController:actOpeList animated:YES];
-    
-//    CourseListViewController *courseList = [[CourseListViewController alloc] init];
-//    courseList.hidesBottomBarWhenPushed = YES;
-//    courseList.videoTypeId = model.id;
-//    courseList.viewTitle = model.name;
-//    courseList.EnglishTitle = @"Practical Operation";
-//    courseList.videoEnum = Course_actOpeVideo;
-//    courseList.totalPrice = model.price/100;
-//     [courseList setModel:model];
-//    TO_WEAK(self, weakSelf);
-//    courseList.PaySuccessCallbackBlock = ^{
-//        [weakSelf getVideoDataList];
-//    };
-//     [self.viewController.navigationController pushViewController:courseList animated:YES];
+    if ([model.videoList isNotEmpty]) {
+        //不为空
+        CourseListViewController *courseList = [[CourseListViewController alloc] init];
+        courseList.hidesBottomBarWhenPushed = YES;
+        courseList.videoTypeId = model.id;
+        courseList.viewTitle = model.name;
+        courseList.EnglishTitle = @"Practical Operation";
+        courseList.videoEnum = Course_actOpeVideo;
+        courseList.totalPrice = model.price/100;
+        [courseList setModel:model];
+        TO_WEAK(self, weakSelf);
+        courseList.PaySuccessCallbackBlock = ^{
+            [weakSelf getVideoDataList];
+        };
+        [self.viewController.navigationController pushViewController:courseList animated:YES];
+    }else {
+        ActOpeListViewController *actOpeList = [[ActOpeListViewController alloc] init];
+        actOpeList.hidesBottomBarWhenPushed = YES;
+        actOpeList.videoTypeId = model.id;
+        actOpeList.viewTitle = model.name;
+        actOpeList.videoEnum = Course_actOpeVideo;
+        [self.viewController.navigationController pushViewController:actOpeList animated:YES];
+    }
+
 }
 
 #pragma mark -- 获取分页数据

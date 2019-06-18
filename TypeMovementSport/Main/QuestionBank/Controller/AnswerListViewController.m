@@ -265,6 +265,8 @@
             NSArray *list = dict[@"list"];
             
             NSMutableArray *arr = [NSMutableArray arrayWithCapacity:list.count];
+//            NSArray *modelArr = [ExamModel arrayOfModelsFromDictionaries:list error:nil];
+//            NSArray *dictArr = [ExamModel arrayOfDictionariesFromModels:modelArr];
             for (NSDictionary *tmp in list) {
                 @autoreleasepool {
                     ExamModel *model = [[ExamModel alloc] initWithDictionary:tmp error:nil];
