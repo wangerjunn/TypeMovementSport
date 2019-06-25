@@ -24,7 +24,7 @@ static NSString *kIsMultiple = @"isMultiple";
 
 //model
 #import "UserModel.h"
-static int countdown = 60;
+static
 
 @interface CerOrRecordQueryViewController () <UITextFieldDelegate>{
     UITextField *nameField;
@@ -38,9 +38,7 @@ static int countdown = 60;
     NSNumber *duration;
     NSTimer *_timer;
     NSTimeInterval currentTime;
-    int code;
-    int randomNumber;
-    NSString *strTime;
+    int countdown;
     
     UITextField *vertifiCodeField;
 }
@@ -53,7 +51,7 @@ static int countdown = 60;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setMyTitle:_navTitle?_navTitle:@""];
-    
+    countdown = 60;
     [self createUI];
 }
 
@@ -394,53 +392,6 @@ static int countdown = 60;
     }
    
     [self cerOrRecordQurayInterface];
-}
-
-- (void)updateTimer {
-    
-    __block NSInteger time = 59;
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    
-    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0);
-    
-    TO_WEAK(self, weakSelf);
-    dispatch_source_set_event_handler(_timer, ^{
-        
-        TO_STRONG(weakSelf, strongSelf);
-        if(time <= 0){
-            
-            dispatch_source_cancel(_timer);
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                strongSelf->vertifiCodeLabel.hidden = YES;
-                [strongSelf->getVertifiCodeBtn setTitle:[NSString stringWithFormat:@"重新发送"] forState:UIControlStateNormal];
-                
-                strongSelf->getVertifiCodeBtn.userInteractionEnabled = YES;
-                strongSelf->phoneField.enabled = YES;
-                
-            });
-            
-        }else{
-            
-            int seconds = time % 60;
-            strongSelf->strTime = [NSString stringWithFormat:@"%d",seconds];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                strongSelf->vertifiCodeLabel.hidden = NO;
-                
-                strongSelf->vertifiCodeLabel.text =[NSString stringWithFormat:@"%2d秒后获取",[strongSelf->strTime intValue] ];
-                [strongSelf->getVertifiCodeBtn setTitle:@"" forState:UIControlStateNormal];
-                
-                strongSelf->getVertifiCodeBtn.userInteractionEnabled = NO;
-                
-            });
-            time--;
-        }
-    });
-    dispatch_resume(_timer);
-    
-    
 }
 
 #pragma mark -- 证书，成绩查询

@@ -267,7 +267,7 @@
         return;
     }
     
-    if ([model.videoList isNotEmpty]) {
+//    if ([model.videoList isNotEmpty]) {
         //不为空
         CourseListViewController *courseList = [[CourseListViewController alloc] init];
         courseList.hidesBottomBarWhenPushed = YES;
@@ -282,14 +282,14 @@
             [weakSelf getVideoDataList];
         };
         [self.viewController.navigationController pushViewController:courseList animated:YES];
-    }else {
-        ActOpeListViewController *actOpeList = [[ActOpeListViewController alloc] init];
-        actOpeList.hidesBottomBarWhenPushed = YES;
-        actOpeList.videoTypeId = model.id;
-        actOpeList.viewTitle = model.name;
-        actOpeList.videoEnum = Course_actOpeVideo;
-        [self.viewController.navigationController pushViewController:actOpeList animated:YES];
-    }
+//    }else {
+//        ActOpeListViewController *actOpeList = [[ActOpeListViewController alloc] init];
+//        actOpeList.hidesBottomBarWhenPushed = YES;
+//        actOpeList.videoTypeId = model.id;
+//        actOpeList.viewTitle = model.name;
+//        actOpeList.videoEnum = Course_actOpeVideo;
+//        [self.viewController.navigationController pushViewController:actOpeList animated:YES];
+//    }
         
 }
 
