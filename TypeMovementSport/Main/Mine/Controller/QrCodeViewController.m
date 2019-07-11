@@ -97,8 +97,14 @@
         //高质量采集
         [_session setSessionPreset:AVCaptureSessionPresetHigh];
         
-        [_session addInput:input];
-        [_session addOutput:output];
+        if ([_session canAddInput:input]) {
+            [_session addInput:input];
+        }
+        
+        if ([_session canAddOutput:output]) {
+             [_session addOutput:output];
+        }
+       
         
         
         output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code];
