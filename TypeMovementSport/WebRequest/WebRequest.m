@@ -18,59 +18,92 @@
 
 #define kNetFailTip @"网络开小差了，请稍后重试！"
 
-@implementation WebRequest
 
-+ (BOOL)isEnableReachabilityNet {
-    
-    __block BOOL ableReachabilityNet = YES;
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
-    [manager startMonitoring];
-    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        
-        if (status == AFNetworkReachabilityStatusNotReachable) {
-            //无法联网
-            ableReachabilityNet = NO;
-        }
-//        switch (status) {
-//            case AFNetworkReachabilityStatusUnknown:
-//            {
-//                // 位置网络
-//                NSLog(@"未知网络");
-//            }
-//                break;
-//            case AFNetworkReachabilityStatusNotReachable:
-//            {
-//                // 无法联网
-//                NSLog(@"无法联网");
-//                ableReachabilityNet = NO;
-//            }
-//                break;
-//            case AFNetworkReachabilityStatusReachableViaWiFi:
-//            {
-//                // 手机自带网络
-//                NSLog(@"当前使用的是2G/3G/4G网络");
-//            }
-//                break;
-//            case AFNetworkReachabilityStatusReachableViaWWAN:
-//            {
-//                // WIFI
-//                NSLog(@"当前在WIFI网络下");
-//            }
-//                
-//            default:
-//                break;
-//        }
-    }];
-    
-    return ableReachabilityNet;
+@interface WebMonitors ()
+
+@property (nonatomic, assign) AFNetworkReachabilityStatus status;
+
+@end
+
+@implementation WebMonitors
+
+static WebMonitors * __shared = nil;
+
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            self.status = status;
+            // 发出通知，各个页面做出相应反应
+        }];
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    }
+    return self;
 }
+
+- (void)setStatus:(AFNetworkReachabilityStatus)status
+{
+    if (status != _status) {
+        if ((status == AFNetworkReachabilityStatusNotReachable || status == AFNetworkReachabilityStatusUnknown) && (_status == AFNetworkReachabilityStatusReachableViaWiFi || _status == AFNetworkReachabilityStatusReachableViaWWAN)) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @autoreleasepool {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:WebChangeCanReachable2NotReachable object:nil];
+                }
+            });
+        }else if ((_status == AFNetworkReachabilityStatusNotReachable || _status == AFNetworkReachabilityStatusUnknown) && (status == AFNetworkReachabilityStatusReachableViaWiFi || status == AFNetworkReachabilityStatusReachableViaWWAN)) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @autoreleasepool {
+                    [[NSNotificationCenter defaultCenter]postNotificationName:WebChangeNotReachable2CanReachable object:nil];
+                }
+            });
+        }
+        
+        _status = status;
+    }
+}
+
++ (BOOL)webIsOK:(NSError **)error
+{
+    return [[WebMonitors share]webIsOK:error];
+}
+
+
+- (BOOL)webIsOK:(NSError **)error
+{
+    if (!([AFNetworkReachabilityManager sharedManager].isReachable || [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus == AFNetworkReachabilityStatusUnknown)) {
+        *error = [NSError errorWithDomain:@"网络错误" code:100 userInfo:nil];
+        return NO;
+    }else {
+        *error = nil;
+        return YES;
+    }
+}
+
++ (WebMonitors *)share
+{
+    @synchronized(self) {
+        if (!__shared) {
+            __shared = [[WebMonitors alloc]init];
+        }
+    }
+    return __shared;
+}
+@end
+
+@implementation WebRequest
 
 + (void)GetWithUrlString:(NSString *)urlString parms:(NSDictionary *)dict viewControll:(UIViewController *)ViewController success:(DownloadSuccessBlock)successBlock failed:(DownloadFailedBlock)failedBlock
 {
     
-    if (![self isEnableReachabilityNet]) {
-        //网络不能链接
-        [SVProgressHUD showErrorWithStatus:kNetFailTip];
+    NSError * err;
+    if (![WebMonitors webIsOK:&err]) {
+        
+        failedBlock(err);
+        if (err.code == 100) {
+            [SVProgressHUD showErrorWithStatus:kTipsNotNet];
+        }
         return;
     }
     if (ViewController) {
@@ -134,9 +167,13 @@
 + (void)PostWithUrlString:(NSString *)urlString parms:(NSDictionary *)dict viewControll:(UIViewController *)ViewController success:(DownloadSuccessBlock)successBlock failed:(DownloadFailedBlock)failedBlock
 {
     
-    if (![self isEnableReachabilityNet]) {
-        //网络不能链接
-        [SVProgressHUD showErrorWithStatus:kNetFailTip];
+    NSError * err;
+    if (![WebMonitors webIsOK:&err]) {
+        
+        failedBlock(err);
+        if (err.code == 100) {
+            [SVProgressHUD showErrorWithStatus:kTipsNotNet];
+        }
         return;
     }
     
@@ -201,9 +238,7 @@
         
     } failure:^(NSURLSessionDataTask * task, NSError * error) {
         NSLog(@"POST:---%@ --\nparams:%@------\n error:%@",urlString,dict,error);
-        if (ViewController) {
-            [SVProgressHUD dismiss];
-        }
+        [SVProgressHUD showErrorWithStatus:kRequestFailTip];
         failedBlock(error);
     }];
     
@@ -213,9 +248,13 @@
 + (void)PostWithUrlString:(NSString *)urlString parms:(NSDictionary *)dict photoArr:(NSArray *)photoArr viewControll:(UIViewController *)ViewController success:(DownloadSuccessBlock)successBlock failed:(DownloadFailedBlock)failedBlock
 {
     
-    if (![self isEnableReachabilityNet]) {
-        //网络不能链接
-        [SVProgressHUD showErrorWithStatus:kNetFailTip];
+    NSError * err;
+    if (![WebMonitors webIsOK:&err]) {
+        
+        failedBlock(err);
+        if (err.code == 100) {
+            [SVProgressHUD showErrorWithStatus:kTipsNotNet];
+        }
         return;
     }
     

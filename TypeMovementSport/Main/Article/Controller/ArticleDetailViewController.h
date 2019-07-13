@@ -12,5 +12,6 @@
 
 @property (nonatomic, copy) NSString *navTitle;
 @property (nonatomic, assign) NSInteger articleId;//文章id
+@property (nonatomic, copy) void (^articleCollectionResultBlock)(void);
 
 @end

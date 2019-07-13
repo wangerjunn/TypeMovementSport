@@ -429,6 +429,10 @@
                 icon.image = [UIImage imageNamed:@"article_detail_un_collect"];
 //                conLabel.text = @"收藏";
             }
+            
+            if (weakSelf.articleCollectionResultBlock) {
+                weakSelf.articleCollectionResultBlock();
+            }
         }else {
             [[CustomAlertView shareCustomAlertView] showTitle:nil content:dict[kMessage] buttonTitle:nil block:nil];
         }

@@ -28,7 +28,12 @@
 - (instancetype)initEmptyViewByFrame:(CGRect)frame placeholderImage:(id)placeholderImage placeholderText:(NSString *)placeholderText {
     
     if (self = [super initWithFrame:frame]) {
+        
         _placeholderText = placeholderText;
+        if (![placeholderText isNotEmpty]) {
+            _placeholderText = @"没有数据？下拉刷新一下试试吧§ ^_^ § ";
+        }
+        
         _placeholderImage = placeholderImage;
         
         [self createUI];

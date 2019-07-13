@@ -61,7 +61,9 @@ void uncaughtExceptionHandler(NSException*exception){
 //    }
     
     
-
+    [WebMonitors share];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webChanged2NotReachable) name:WebChangeCanReachable2NotReachable object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(webChanged2CanReachable) name:WebChangeNotReachable2CanReachable object:nil];
     dispatch_async(dispatch_get_main_queue(), ^{
         //友盟统计
         [self umengTrack];
@@ -171,6 +173,19 @@ void uncaughtExceptionHandler(NSException*exception){
         }else{
         }
     }];
+}
+
+//当网络发生变化 由有网跳转到无网时调用
+- (void)webChanged2NotReachable
+{
+    QLLogFunction
+    [SVProgressHUD showInfoWithStatus:kTipsNotNet];
+}
+
+//当网络发生变化 由无网跳转到有网时调用
+- (void)webChanged2CanReachable
+{
+    QLLogFunction
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -456,7 +471,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if ([viewController isKindOfClass:BaseNavigationViewController.class]) {
         BaseNavigationViewController *nav = (BaseNavigationViewController*)viewController;
         NSString *className = NSStringFromClass(nav.viewControllers.firstObject.class);
-        if ([className isEqualToString:@"CourseViewController"] || [className isEqualToString:@"MineViewController"]) {
+        if ([className isEqualToString:@"CourseViewController"] || [className isEqualToString:@"MineViewController"] || [className isEqualToString:@"LoseFatViewController"]) {
             if (![Tools isLoginAccount]) {
                 
                 LoginViewController *login = [[LoginViewController alloc] init];

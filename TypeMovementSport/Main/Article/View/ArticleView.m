@@ -10,6 +10,7 @@
 #import "ArticleListCell.h"
 #import "ArticleDetailViewController.h"
 #import "BaseNavigationViewController.h"
+#import "ArticleViewController.h"
 
 //view
 #import "MJRefresh.h"
@@ -100,8 +101,10 @@
         NSString *info = @"您还没有收藏任何文字哦！";
         _tipsView = [[EmptyPlaceholderTipsView alloc] initWithFrame:self.bounds title:nil info:info block:^{
             //点击占位view
-            [weakSelf.viewController.navigationController.tabBarController setSelectedIndex:0];
-            [weakSelf.viewController.navigationController popToRootViewControllerAnimated:YES];
+            ArticleViewController *articleVC = [ArticleViewController new];
+            [weakSelf.viewController.navigationController pushViewController:articleVC animated:YES];
+//            [weakSelf.viewController.navigationController.tabBarController setSelectedIndex:0];
+//            [weakSelf.viewController.navigationController popToRootViewControllerAnimated:YES];
         }];
     }
     
@@ -159,6 +162,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ArticleDetailViewController *articleDetail = [[ArticleDetailViewController alloc]init];
     articleDetail.hidesBottomBarWhenPushed = YES;
+    if (isFromMyCollection) {
+        TO_WEAK(self, weakSelf);
+        articleDetail.articleCollectionResultBlock = ^{
+            TO_STRONG(weakSelf, strongSelf);
+            [strongSelf->articleTable.mj_header beginRefreshing];
+        };
+    }
     ArticleListModel *model = dataArr[indexPath.row];
     articleDetail.articleId = model.id;
     articleDetail.navTitle = model.name;

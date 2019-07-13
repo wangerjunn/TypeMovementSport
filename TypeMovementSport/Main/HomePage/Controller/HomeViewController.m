@@ -30,7 +30,9 @@ static NSString *kIsMultiple = @"isMultiple";
 #import "MessageViewController.h"//消息
 #import "LoginViewController.h"
 #import "ResumeBasicInfoViewController.h"
+#import "LoseFatViewController.h"//减脂
 #import "TestViewController.h"
+#import "ArticleViewController.h"
 
 //view
 #import "HP_btnCollectionViewCell.h"
@@ -522,6 +524,17 @@ static NSString *kIsMultiple = @"isMultiple";
     [self.navigationController pushViewController:increaseTrain animated:YES];
 }
 
+#pragma mark -- 减脂塑形
+- (void)loseFatAction {
+    [MobClick event:@"首页，减脂塑形"];
+    if (![Tools isLoginAccount]) {
+        [self displayLoginView];
+        return;
+    }
+    
+    self.tabBarController.selectedIndex = 3;
+}
+
 #pragma mark -- 国职认证
 - (void)certificateQuery {
     [MobClick event:@"首页，国职认证"];
@@ -592,7 +605,10 @@ static NSString *kIsMultiple = @"isMultiple";
         [tabar setSelectedIndex:1];
     }else if (tap.view.tag-1 == self.dynamiacArr.count+2) {
         //精选文章
-        [tabar setSelectedIndex:0];
+//        [tabar setSelectedIndex:0];
+        ArticleViewController *articleVC = [ArticleViewController new];
+        articleVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:articleVC animated:YES];
     }else {
         //国职实操
         if (![Tools isLoginAccount]) {
@@ -614,7 +630,7 @@ static NSString *kIsMultiple = @"isMultiple";
                     [course selectIndex:2];
                 }
                 
-                [tabar setSelectedIndex:3];
+                [tabar setSelectedIndex:0];
             }
         }
     }

@@ -8,6 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+#define WebChangeCanReachable2NotReachable @"WebChangeCanReachable2NotReachable"
+#define WebChangeNotReachable2CanReachable @"WebChangeNotReachable2CanReachable"
+
+
+@interface WebMonitors : NSObject
+
++ (BOOL)webIsOK:(NSError **)error;
+
+//检测web能否正常访问 能正常访问， 则返回yes 否则no
+- (BOOL)webIsOK:(NSError **)error;
+
++ (WebMonitors *)share;
+
+@end
+
 @interface WebRequest : NSObject
 
 typedef void(^DownloadSuccessBlock)(NSDictionary *dict,NSString *remindMsg);

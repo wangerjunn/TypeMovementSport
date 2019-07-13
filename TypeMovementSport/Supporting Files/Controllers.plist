@@ -4,13 +4,13 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>文章</string>
+		<string>课程</string>
 		<key>iconNormal</key>
-		<string>article_normal</string>
+		<string>course_normal</string>
 		<key>iconSelect</key>
-		<string>article_sele</string>
+		<string>course_sele</string>
 		<key>className</key>
-		<string>ArticleViewController</string>
+		<string>CourseViewController</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -34,13 +34,13 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>课程</string>
+		<string>减脂</string>
 		<key>iconNormal</key>
-		<string>course_normal</string>
+		<string>article_normal</string>
 		<key>iconSelect</key>
-		<string>course_sele</string>
+		<string>article_sele</string>
 		<key>className</key>
-		<string>CourseViewController</string>
+		<string>LoseFatViewController</string>
 	</dict>
 	<dict>
 		<key>title</key>
