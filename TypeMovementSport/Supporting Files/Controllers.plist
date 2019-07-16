@@ -36,9 +36,9 @@
 		<key>title</key>
 		<string>减脂</string>
 		<key>iconNormal</key>
-		<string>article_normal</string>
+		<string>loseFat_normal</string>
 		<key>iconSelect</key>
-		<string>article_sele</string>
+		<string>loseFat_sele</string>
 		<key>className</key>
 		<string>LoseFatViewController</string>
 	</dict>

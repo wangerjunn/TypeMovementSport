@@ -226,9 +226,21 @@ static NSString *kIsMultiple = @"isMultiple";
              imgUrl = "http://xdh-banner.oss-cn-hangzhou.aliyuncs.com/ykb.jpg";
              isJump = 0;
              url = "http://test.xingdongsport.com/web/train/1";
+            type = 0;
          }
          */
-        if ([(strongSelf->bannerArray[currentIndex][@"isJump"]) integerValue] == 1) {
+        
+        NSDictionary *dict = strongSelf->bannerArray[currentIndex];
+        if ([dict[@"isJump"] integerValue] == 1) {
+            
+            if ([dict[@"type"] isEqualToString:@"LOSE_FAT"]) {
+                //跳到减脂
+                [self loseFatAction];
+//                LoseFatViewController *loseFat = [LoseFatViewController new];
+//                loseFat.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:loseFat animated:YES];
+                return;
+            }
             WebViewController *web = [[WebViewController alloc]init];
             NSString *url = strongSelf->bannerArray[currentIndex][@"url"];
             NSLog(@"%ld",(long)currentIndex);
@@ -532,7 +544,10 @@ static NSString *kIsMultiple = @"isMultiple";
         return;
     }
     
-    self.tabBarController.selectedIndex = 3;
+    LoseFatViewController *loseFat = [LoseFatViewController new];
+    loseFat.isFromHomePage = YES;
+    loseFat.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:loseFat animated:YES];
 }
 
 #pragma mark -- 国职认证

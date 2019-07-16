@@ -34,7 +34,19 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setNavBarColor:[UIColor whiteColor]];    
+    [self setNavBarColor:[UIColor whiteColor]];
+    
+    [self initData];
+}
+
+#pragma mark -- 初始化数据，必须登录时展示
+- (void)initData {
+    if (_dataArr == nil && [Tools isLoginAccount]) {
+        _dataArr = [NSMutableArray array];
+        
+        [self startLoadingAnimation];
+        [self getVideoDataList];
+    }
 }
 
 - (void)viewDidLoad {
@@ -44,14 +56,24 @@
     [self hiddenBackBtn];
     UIView *topView = [[BoldNavigationTitleView alloc] initBoldNavigationTitleView:@"LoseFat 减脂" boldPart:@"LoseFat"];
     
+    if (self.isFromHomePage) {
+        UIButton *cancelBtn = [ButtonTool createButtonWithImageName:@"general_cancel" addTarget:self action:@selector(goBack)];
+        cancelBtn.frame = CGRectMake(topView.width - 20 - 15-10, (topView.height - 25)/2.0, 15+10, 15+10);
+        [cancelBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+        [topView addSubview:cancelBtn];
+    }
     self.navigationItem.titleView = topView;
-    _dataArr = [NSMutableArray array];
     [self createUI];
 }
 
 - (void)createUI {
+    
+    CGFloat tableHeight = kScreenHeight - kNavigationBarHeight - kTabBarHeight;
+    if (self.isFromHomePage) {
+        tableHeight = kScreenHeight - kNavigationBarHeight;
+    }
     loseFatTable = [[UITableView alloc]initWithFrame:
-                    CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight) style:UITableViewStyleGrouped];
+                    CGRectMake(0, 0, kScreenWidth, tableHeight) style:UITableViewStyleGrouped];
     loseFatTable.delegate = self;
     loseFatTable.dataSource = self;
     loseFatTable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -69,8 +91,12 @@
         [weakSelf getVideoDataList];
     }];
     
-    [self startLoadingAnimation];
-    [self getVideoDataList];
+    if ([Tools isLoginAccount]) {
+        _dataArr = [NSMutableArray array];
+        [self startLoadingAnimation];
+        [self getVideoDataList];
+    }
+    
     
 }
 

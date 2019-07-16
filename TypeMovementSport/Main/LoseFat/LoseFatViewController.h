@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoseFatViewController : BaseViewController
 
+@property (nonatomic, assign) BOOL isFromHomePage;
+
 @end
 
 NS_ASSUME_NONNULL_END
