@@ -66,6 +66,7 @@
 		1856290A21E2243100638C21 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856290821E2243100638C21 /* MessageTableViewCell.m */; };
 		1856290D21E2245A00638C21 /* SystemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856290C21E2245A00638C21 /* SystemTableViewCell.m */; };
 		1856291021E3741900638C21 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1856290F21E3741900638C21 /* TestViewController.m */; };
+		185BC45322D76B5B004B80F0 /* LoseFatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185BC45222D76B5B004B80F0 /* LoseFatViewController.m */; };
 		185CFF5C215E611000FE5EF9 /* ResumeInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185CFF5B215E611000FE5EF9 /* ResumeInfoCell.m */; };
 		1864E07F223E825D0059EDD9 /* HP_couponView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E07E223E825D0059EDD9 /* HP_couponView.m */; };
 		1864E082223E90800059EDD9 /* HP_couponCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1864E081223E90800059EDD9 /* HP_couponCell.m */; };
@@ -433,6 +434,8 @@
 		1856290C21E2245A00638C21 /* SystemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemTableViewCell.m; sourceTree = "<group>"; };
 		1856290E21E3741900638C21 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		1856290F21E3741900638C21 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		185BC45122D76B5B004B80F0 /* LoseFatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoseFatViewController.h; sourceTree = "<group>"; };
+		185BC45222D76B5B004B80F0 /* LoseFatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoseFatViewController.m; sourceTree = "<group>"; };
 		185CFF56215E53B600FE5EF9 /* OrderPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPayViewController.m; sourceTree = "<group>"; };
 		185CFF5A215E611000FE5EF9 /* ResumeInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResumeInfoCell.h; sourceTree = "<group>"; };
 		185CFF5B215E611000FE5EF9 /* ResumeInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResumeInfoCell.m; sourceTree = "<group>"; };
@@ -1034,6 +1037,15 @@
 				180C77FE215D10CE00D95826 /* ShowCardTemplateMenuView.m */,
 			);
 			path = ElectronicCard;
+			sourceTree = "<group>";
+		};
+		185BC45022D76B0D004B80F0 /* LoseFat */ = {
+			isa = PBXGroup;
+			children = (
+				185BC45122D76B5B004B80F0 /* LoseFatViewController.h */,
+				185BC45222D76B5B004B80F0 /* LoseFatViewController.m */,
+			);
+			path = LoseFat;
 			sourceTree = "<group>";
 		};
 		18664E6D214E0B46003B5382 /* MySignView */ = {
@@ -2191,6 +2203,7 @@
 		219DBABA212D06C40052396A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				185BC45022D76B0D004B80F0 /* LoseFat */,
 				18B19F9921FFF29300676F61 /* LaunchView */,
 				1899114621FB05E200ED648E /* GuideView */,
 				219DBAC0212D07F80052396A /* Login&Register */,
@@ -2670,6 +2683,7 @@
 				21C740B8215243B7007B8CA9 /* IncreaseTrainDetailViewController.m in Sources */,
 				2190999E216D9743000C9A8D /* CustomAlertView.m in Sources */,
 				219DBADA212D3C8F0052396A /* BaseNavigationViewController.m in Sources */,
+				185BC45322D76B5B004B80F0 /* LoseFatViewController.m in Sources */,
 				21C740AC2152432F007B8CA9 /* ApplyJobListCell.m in Sources */,
 				1822E05121A7EAE600FAE86B /* PersonalResumeIntrViewController.m in Sources */,
 				219D258D215A33A60001CEB8 /* ElectronicElementCardCell.m in Sources */,

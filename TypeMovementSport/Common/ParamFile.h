@@ -25,6 +25,7 @@
 
 #define kPerfectInfoTip @"请完善信息"
 #define kRequestFailTip @"请求失败"
+#define kTipsNotNet @"网络开小差了o(╯□╰)o"
 #define kPlaceHolderHead @"无头像"
 #define kServiceTele @"010-57794818"  //客服电话
 #define kShareDefaultLogo @"http://img.xingdongsport.com/file/WechatIMG6500.png"

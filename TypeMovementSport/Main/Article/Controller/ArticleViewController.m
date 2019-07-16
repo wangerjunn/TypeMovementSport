@@ -54,6 +54,12 @@
     
     self.navigationItem.titleView = topView;
     
+    UIButton *cancelBtn = [ButtonTool createButtonWithImageName:@"general_cancel" addTarget:self action:@selector(goBack)];
+    cancelBtn.frame = CGRectMake(topView.width - 20 - 15-10, (topView.height - 25)/2.0, 15+10, 15+10);
+    [cancelBtn setImageEdgeInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    [topView addSubview:cancelBtn];
+    
+    
     WJItemsConfig *config = [[WJItemsConfig alloc]init];
     
     _itemControlView = [[WJItemsControlView alloc]initWithFrame:
@@ -104,8 +110,7 @@
     if (!_mainScrollView) {
         _mainScrollView = [[UIScrollView alloc]initWithFrame:
                            CGRectMake(0, _itemControlView.height,
-                                      kScreenWidth, kScreenHeight - kNavigationBarHeight -
-                                      kTabBarHeight - _itemControlView.height)];
+                                      kScreenWidth, kScreenHeight - kNavigationBarHeight - _itemControlView.height)];
         _mainScrollView.backgroundColor = [UIColor whiteColor];
         _mainScrollView.delegate = self;
         _mainScrollView.pagingEnabled = YES;

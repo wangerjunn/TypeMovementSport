@@ -26,29 +26,29 @@
 		<key>action</key>
 		<string>showIncreaseVideo</string>
 	</dict>
-    <dict>
-        <key>title</key>
-        <string>增值培训</string>
-        <key>icon</key>
-        <string>HP_increaseTrain</string>
-        <key>action</key>
-        <string>increaseTrain</string>
-    </dict>
-    <dict>
-        <key>title</key>
-        <string>我要求职</string>
-        <key>icon</key>
-        <string>HP_job</string>
-        <key>action</key>
-        <string>wantToJob</string>
-    </dict>
-    <dict>
-        <key>title</key>
-        <string>我要招聘</string>
-        <key>icon</key>
-        <string>HP_ recruit</string>
-        <key>action</key>
-        <string>wantToRecruit</string>
-    </dict>
+	<dict>
+		<key>title</key>
+		<string>减脂塑形</string>
+		<key>icon</key>
+		<string>HP_loseFat</string>
+		<key>action</key>
+		<string>loseFatAction</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>我要求职</string>
+		<key>icon</key>
+		<string>HP_job</string>
+		<key>action</key>
+		<string>wantToJob</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>我要招聘</string>
+		<key>icon</key>
+		<string>HP_ recruit</string>
+		<key>action</key>
+		<string>wantToRecruit</string>
+	</dict>
 </array>
 </plist>

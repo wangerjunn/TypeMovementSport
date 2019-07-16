@@ -76,7 +76,13 @@
     if (model.price != 0) {
         _priceLabel.text = [NSString stringWithFormat:@"RMB %.2f",model.price/100];
     }
+    
+    if (!model.isShowPrice) {
+        _priceLabel.hidden = YES;
+    }else{
+        _priceLabel.hidden = NO;
+    }
     _titleLabel.text = model.name;
-    _itemCountLabel.text = [NSString stringWithFormat:@"%ld项",model.videoList.count];
+    _itemCountLabel.text = [NSString stringWithFormat:@"%lu项",(unsigned long)model.videoList.count];
 }
 @end

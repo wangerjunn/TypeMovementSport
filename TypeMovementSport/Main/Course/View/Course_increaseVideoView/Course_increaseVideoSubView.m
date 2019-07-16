@@ -267,7 +267,7 @@
         return;
     }
     
-    if ([model.videoList isNotEmpty]) {
+    if (!([model.classesCount isNotEmpty] && [model.classesCount integerValue] > 0)) {
         //不为空
         CourseListViewController *courseList = [[CourseListViewController alloc] init];
         courseList.hidesBottomBarWhenPushed = YES;
@@ -290,7 +290,6 @@
         actOpeList.videoEnum = Course_actOpeVideo;
         [self.viewController.navigationController pushViewController:actOpeList animated:YES];
     }
-
 }
 
 #pragma mark -- 全部品类

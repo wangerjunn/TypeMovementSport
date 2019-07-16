@@ -66,6 +66,7 @@
 @property (nonatomic, assign) NSTimeInterval expireTime;//购买的过期时间(0:未购买或已过期 | 大于0:过期时间)
 @property (nonatomic, assign) NSInteger payCount;//购买次数
 @property (nonatomic, copy) NSString *count;//共多少套题
+@property (nonatomic, copy) NSString *classesCount;//判断是否大于0，大于0展示多层列表
 @property (nonatomic, assign) NSInteger examCount;//练习次数
 @property (nonatomic, assign) NSInteger browseCount;//浏览数量
 @property (nonatomic, assign) NSInteger shareCount;//分享数量
