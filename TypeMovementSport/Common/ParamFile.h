@@ -102,6 +102,7 @@
 #define UserDefaultsSet(a,b) [[NSUserDefaults standardUserDefaults] setObject:a forKey:b]
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define K_SAFE_HEIGHT (kScreenHeight==812?34:0)
 #define kNavigationBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height + 44)
 #define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
 

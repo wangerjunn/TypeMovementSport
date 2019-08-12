@@ -55,7 +55,8 @@
     }];
     //底部工具条
     [self .bottomToolBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self);
+        make.left.right.equalTo(self);
+        make.bottom.equalTo(self).offset(-K_SAFE_HEIGHT/2.0);
         make.height.mas_equalTo(ToolBarHeight);
     }];
     //转子
