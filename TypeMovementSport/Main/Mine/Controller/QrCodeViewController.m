@@ -54,6 +54,11 @@
     mediaUI.mediaTypes= [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
     mediaUI.allowsEditing=NO;
     mediaUI.delegate=self;
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+    } else {
+        // Fallback on earlier versions
+    }
     [self presentViewController:mediaUI animated:YES completion:^{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         
@@ -309,7 +314,11 @@ void soundCompleteCallback(SystemSoundID soundID,void * clientData){
 
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info {
     
-    
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
     UIImage*image = [info objectForKey:UIImagePickerControllerEditedImage];
     if(!image){
         image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -331,7 +340,7 @@ void soundCompleteCallback(SystemSoundID soundID,void * clientData){
                sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent
               animated:YES];
              UIAlertController*alert = [UIAlertController alertControllerWithTitle:@"提示"
-                                                                           message:@"该图片没有包含二维码！"preferredStyle:UIAlertControllerStyleAlert];
+                                                                           message:@"该图片没有包含Ï√二维码！"preferredStyle:UIAlertControllerStyleAlert];
              UIAlertAction*confirm = [UIAlertAction
                                       actionWithTitle:@"知道了"
                                       style:UIAlertActionStyleDefault
@@ -349,6 +358,11 @@ void soundCompleteCallback(SystemSoundID soundID,void * clientData){
     
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController*)picker {
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
     [picker dismissViewControllerAnimated:YES completion:^{
         [[UIApplication sharedApplication]
          setStatusBarStyle:UIStatusBarStyleLightContent

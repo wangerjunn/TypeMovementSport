@@ -38,6 +38,11 @@
     mediaUI.mediaTypes= [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
     mediaUI.allowsEditing=NO;
     mediaUI.delegate=self;
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+    } else {
+        // Fallback on earlier versions
+    }
     [self presentViewController:mediaUI animated:YES completion:^{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         
@@ -61,7 +66,11 @@
 
 - (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary*)info {
     
-    
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
     UIImage*image = [info objectForKey:UIImagePickerControllerEditedImage];
     if(!image){
         image = [info objectForKey:UIImagePickerControllerOriginalImage];
@@ -72,15 +81,8 @@
             [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
             CIQRCodeFeature*feature = [features objectAtIndex:0];
             NSString*scannedResult = feature.messageString;
-            //播放扫描二维码的声音
-            
-            SystemSoundID soundID;
-            //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            NSString*strSoundFile = [[NSBundle mainBundle]pathForResource:@"qrcode_found"ofType:@"wav"];
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
-            AudioServicesPlaySystemSound(soundID);
-//            [self accordingQcode:scannedResult];
-            
+           
+            [self handleUrl:scannedResult];
         }];
         
     }else{
@@ -109,12 +111,82 @@
     
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController*)picker {
+    if (@available(iOS 11.0, *)) {
+        [UIScrollView appearance].contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    } else {
+        // Fallback on earlier versions
+    }
     [picker dismissViewControllerAnimated:YES completion:^{
          [[UIApplication sharedApplication]
           setStatusBarStyle:UIStatusBarStyleLightContent
           animated:YES];
          
      }];
+    
+}
+
+
+- (void)handleUrl:(NSString *)string {
+    
+    //NSString *string = @"http://test.xingdongsport.com/xdty/api/userCouponBag/receive?id=8";
+    //获取问号的位置，问号后是参数列表
+    NSRange range = [string rangeOfString:@"?"];
+    
+    if (range.location == NSNotFound) {
+        
+        [self qrInvalid];
+        
+    }else{
+        
+        //获取参数列表
+        NSString *propertys = [string substringFromIndex:(int)(range.location+1)];
+        
+        string = [string substringToIndex:range.location];
+        NSArray *compents = [propertys componentsSeparatedByString:@"="];
+        if (compents.count > 1) {
+            //进行字符串的拆分，通过=来拆分，把每个参数分开
+            if ([propertys rangeOfString:@"="].location != NSNotFound) {
+                
+                NSString *couponId = compents.lastObject;
+                
+                
+                TO_WEAK(self, weakSelf);
+                [WebRequest PostWithUrlString:string parms:@{@"id":couponId?couponId:@""} viewControll:self success:^(NSDictionary *dict, NSString *remindMsg) {
+                    
+                    TO_STRONG(weakSelf, strongSelf);
+                    if ([remindMsg integerValue] == 999) {
+                        if ([dict[@"bool"] integerValue] == 1) {
+                            [[CustomAlertView shareCustomAlertView] showTitle:nil content:@"领取成功，请前往'我的->优惠券'中查看" buttonTitle:nil block:nil];
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }
+                        
+                    }else if ([remindMsg isEqualToString:@"440"]) {
+                        [[CustomAlertView shareCustomAlertView] showTitle:nil content:dict[kMessage] buttonTitle:nil block:nil];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }else {
+                        [[CustomAlertView shareCustomAlertView] showTitle:nil content:dict[kMessage] buttonTitle:nil block:^(NSInteger index) {
+                        }];
+                        
+                    }
+                } failed:^(NSError *error) {
+                    TO_STRONG(weakSelf, strongSelf);
+                }];
+                
+            }else{
+                [self qrInvalid];
+            }
+        }
+    }
+    
+}
+
+- (void)qrInvalid{
+    
+    if ([CustomAlertView shareCustomAlertView].isHidden) {
+        
+        [[CustomAlertView shareCustomAlertView]showTitle:nil content:@"扫描无效"  buttonTitle:nil block:nil];
+    }
+    
     
 }
     
