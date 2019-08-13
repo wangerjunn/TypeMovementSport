@@ -6,11 +6,11 @@
 //  Copyright © 2019 wangxitan. All rights reserved.
 //
 
-#import "HYBaseVC.h"
+#import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface QrScanViewController : HYBaseVC
+@interface QrScanViewController : BaseViewController
 
 @end
 
