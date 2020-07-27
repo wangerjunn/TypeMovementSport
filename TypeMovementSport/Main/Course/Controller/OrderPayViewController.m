@@ -348,7 +348,9 @@
             req.timeStamp = (uint32_t)[payReqDic[@"timestamp"] integerValue];
             req.package  = payReqDic[@"package"];
             req.sign = [NSString stringWithFormat:@"%@",payReqDic[@"sign"]];
-            [WXApi sendReq:req];
+            [WXApi sendReq:req completion:^(BOOL success) {
+                
+            }];
             AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             delegate.WXCallBackResultBlock = ^(BaseResp *resp) {
                 [weakSelf onResp:resp];

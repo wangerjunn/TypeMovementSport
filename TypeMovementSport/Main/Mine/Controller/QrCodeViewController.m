@@ -243,13 +243,7 @@
 }
 
 - (void)qrInvalid{
-    
-    if ([CustomAlertView shareCustomAlertView].isHidden) {
-        
-        [[CustomAlertView shareCustomAlertView]showTitle:nil content:@"扫描无效"  buttonTitle:nil block:nil];
-    }
-    
-    
+    [[CustomAlertView shareCustomAlertView]showTitle:nil content:@"扫描无效"  buttonTitle:nil block:nil];
 }
 
 - (void)requestMajorData:(NSString *)majorNo{

@@ -283,7 +283,9 @@
         }
     };
     
-    [WXApi sendReq:req];
+    [WXApi sendReq:req completion:^(BOOL success) {
+        
+    }];
 }
 
 # pragma mark -- 微博登录

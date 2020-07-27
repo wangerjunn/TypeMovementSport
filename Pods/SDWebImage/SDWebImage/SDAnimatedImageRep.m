@@ -10,16 +10,24 @@
 
 #if SD_MAC
 
-#import "SDImageGIFCoderInternal.h"
-#import "SDImageAPNGCoderInternal.h"
+#import "SDWebImageGIFCoder.h"
 
-@interface SDAnimatedImageRep ()
+@interface SDWebImageGIFCoder ()
 
-@property (nonatomic, assign, readonly, nullable) CGImageSourceRef imageSource;
+- (float)sd_frameDurationAtIndex:(NSUInteger)index source:(CGImageSourceRef)source;
 
 @end
 
-@implementation SDAnimatedImageRep
+@implementation SDAnimatedImageRep {
+    CGImageSourceRef _imageSource;
+}
+
+- (void)dealloc {
+    if (_imageSource) {
+        CFRelease(_imageSource);
+        _imageSource = NULL;
+    }
+}
 
 // `NSBitmapImageRep`'s `imageRepWithData:` is not designed initlizer
 + (instancetype)imageRepWithData:(NSData *)data {
@@ -31,29 +39,11 @@
 - (instancetype)initWithData:(NSData *)data {
     self = [super initWithData:data];
     if (self) {
-        CGImageSourceRef imageSource = self.imageSource;
+        CGImageSourceRef imageSource = CGImageSourceCreateWithData((__bridge CFDataRef) data, NULL);
         if (!imageSource) {
             return self;
         }
-        NSUInteger frameCount = CGImageSourceGetCount(imageSource);
-        if (frameCount <= 1) {
-            return self;
-        }
-        CFStringRef type = CGImageSourceGetType(imageSource);
-        if (!type) {
-            return self;
-        }
-        if (CFStringCompare(type, kUTTypeGIF, 0) == kCFCompareEqualTo) {
-            // GIF
-            // Do nothing because NSBitmapImageRep support it
-        } else if (CFStringCompare(type, kUTTypePNG, 0) == kCFCompareEqualTo) {
-            // APNG
-            // Do initilize about frame count, current frame/duration and loop count
-            [self setProperty:NSImageFrameCount withValue:@(frameCount)];
-            [self setProperty:NSImageCurrentFrame withValue:@(0)];
-            NSUInteger loopCount = [[SDImageAPNGCoder sharedCoder] sd_imageLoopCountWithSource:imageSource];
-            [self setProperty:NSImageLoopCount withValue:@(loopCount)];
-        }
+        _imageSource = imageSource;
     }
     return self;
 }
@@ -63,7 +53,7 @@
     [super setProperty:property withValue:value];
     if ([property isEqualToString:NSImageCurrentFrame]) {
         // Access the image source
-        CGImageSourceRef imageSource = self.imageSource;
+        CGImageSourceRef imageSource = _imageSource;
         if (!imageSource) {
             return;
         }
@@ -74,12 +64,9 @@
         }
         NSUInteger index = [value unsignedIntegerValue];
         float frameDuration = 0;
+        // Through we currently process GIF only, in the 5.x we support APNG so we keep the extensibility
         if (CFStringCompare(type, kUTTypeGIF, 0) == kCFCompareEqualTo) {
-            // GIF
-            frameDuration = [[SDImageGIFCoder sharedCoder] sd_frameDurationAtIndex:index source:imageSource];
-        } else if (CFStringCompare(type, kUTTypePNG, 0) == kCFCompareEqualTo) {
-            // APNG
-            frameDuration = [[SDImageAPNGCoder sharedCoder] sd_frameDurationAtIndex:index source:imageSource];
+            frameDuration = [[SDWebImageGIFCoder sharedCoder] sd_frameDurationAtIndex:index source:imageSource];
         }
         if (!frameDuration) {
             return;
@@ -87,16 +74,6 @@
         // Reset super frame duration with the actual frame duration
         [super setProperty:NSImageCurrentFrameDuration withValue:@(frameDuration)];
     }
-}
-
-- (CGImageSourceRef)imageSource {
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-    if (_tiffData) {
-        return (__bridge CGImageSourceRef)(_tiffData);
-    }
-#pragma GCC diagnostic pop
-    return NULL;
 }
 
 @end

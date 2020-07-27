@@ -13,11 +13,8 @@
 @protocol AMapSearchDelegate;
 
 ///搜索结果语言
-typedef NS_ENUM(NSInteger, AMapSearchLanguage)
-{
-    AMapSearchLanguageZhCN = 0, ///< 中文
-    AMapSearchLanguageEn = 1    ///< 英文
-};
+#define AMapSearchLanguageZhCN @"zh" ///< 中文
+#define AMapSearchLanguageEn @"en" ///< 英文
 
 ///搜索类
 @interface AMapSearchAPI : NSObject
@@ -29,8 +26,7 @@ typedef NS_ENUM(NSInteger, AMapSearchLanguage)
 @property (nonatomic, assign) NSInteger timeout;
 
 ///查询结果返回语言, 默认为中文。
-@property (nonatomic, assign) AMapSearchLanguage language;
-
+@property (nonatomic, copy) NSString *language;
 
 /**
  * @brief AMapSearch的初始化函数。
@@ -149,6 +145,12 @@ typedef NS_ENUM(NSInteger, AMapSearchLanguage)
 - (void)AMapTruckRouteSearch:(AMapTruckRouteSearchRequest *)request;
 
 /**
+ * @brief 未来路线规划查询接口 （since 6.9.0）
+ * @param request 查询选项。具体属性字段请参考 AMapTruckRouteSearchRequest 类。
+ */
+- (void)AMapFutureRouteSearch:(AMapFutureRouteSearchRequest *)request;
+
+/**
  * @brief 天气查询接口
  * @param request 查询选项。具体属性字段请参考 AMapWeatherSearchRequest 类。
  */
@@ -178,30 +180,30 @@ typedef NS_ENUM(NSInteger, AMapSearchLanguage)
  * @brief 附近搜索查询接口
  * @param request 查询选项。具体属性字段请参考 AMapNearbySearchRequest 类。
  */
-- (void)AMapNearbySearch:(AMapNearbySearchRequest *)request;
+- (void)AMapNearbySearch:(AMapNearbySearchRequest *)request __attribute__((deprecated("已废弃, from 7.4.0，该功能不再支持")));
 
-#pragma mark - 云图搜索相关
+#pragma mark - 企业地图搜索相关
 
 /**
- * @brief 云图周边查询接口
+ * @brief 企业地图周边查询接口
  * @param request 查询选项。具体属性字段请参考 AMapCloudPOIAroundSearchRequest 类。
  */
 - (void)AMapCloudPOIAroundSearch:(AMapCloudPOIAroundSearchRequest *)request;
 
 /**
- * @brief 云图polygon区域查询接口
+ * @brief 企业地图polygon区域查询接口
  * @param request 查询选项。具体属性字段请参考 AMapCloudPOIPolygonSearchRequest 类。
  */
 - (void)AMapCloudPOIPolygonSearch:(AMapCloudPOIPolygonSearchRequest *)request;
 
 /**
- * @brief 云图ID查询接口
+ * @brief 企业地图ID查询接口
  * @param request 查询选项。具体属性字段请参考 AMapCloudPOIIDSearchRequest 类。
  */
 - (void)AMapCloudPOIIDSearch:(AMapCloudPOIIDSearchRequest *)request;
 
 /**
- * @brief 云图本地查询接口
+ * @brief 企业地图本地查询接口
  * @param request 查询选项。具体属性字段请参考 AMapCloudPOILocalSearchRequest 类。
  */
 - (void)AMapCloudPOILocalSearch:(AMapCloudPOILocalSearchRequest *)request;
@@ -311,6 +313,13 @@ typedef NS_ENUM(NSInteger, AMapSearchLanguage)
 - (void)onRouteSearchDone:(AMapRouteSearchBaseRequest *)request response:(AMapRouteSearchResponse *)response;
 
 /**
+ * @brief 未来路径规划查询回调 since 6.9.0
+ * @param request  发起的请求，具体字段参考 AMapRouteSearchBaseRequest 及其子类。
+ * @param response 响应结果，具体字段参考 AMapRouteSearchResponse 。
+ */
+- (void)onFutureRouteSearchDone:(AMapRouteSearchBaseRequest *)request response:(AMapFutureRouteSearchResponse *)response;
+
+/**
  * @brief 距离查询回调
  * @param request  发起的请求，具体字段参考 AMapDistanceSearchRequest 及其子类。
  * @param response 响应结果，具体字段参考 AMapDistanceSearchResponse 。
@@ -340,10 +349,10 @@ typedef NS_ENUM(NSInteger, AMapSearchLanguage)
  */
 - (void)onNearbySearchDone:(AMapNearbySearchRequest *)request response:(AMapNearbySearchResponse *)response;
 
-#pragma mark - 云图搜索回调
+#pragma mark - 企业地图搜索回调
 
 /**
- * @brief  云图查询回调函数
+ * @brief  企业地图查询回调函数
  * @param request 发起的请求，具体字段参考 AMapCloudSearchBaseRequest 。
  * @param response 响应结果，具体字段参考 AMapCloudPOISearchResponse 。
  */

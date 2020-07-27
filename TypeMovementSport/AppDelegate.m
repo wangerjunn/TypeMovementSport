@@ -73,7 +73,7 @@ void uncaughtExceptionHandler(NSException*exception){
         [WeiboSDK registerApp:SINA_APPKEY];
         
         // 注册微信
-        [WXApi registerApp:WEICHAT_APPID];
+        [WXApi registerApp:WEICHAT_APPID universalLink:@""];
         
         //注册环信
         EMOptions *options = [EMOptions optionsWithAppkey:EM_AppKey];

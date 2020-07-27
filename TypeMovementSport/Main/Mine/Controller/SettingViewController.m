@@ -14,7 +14,7 @@
 #import "DevelopmentViewController.h"
 #import <HyphenateLite/HyphenateLite.h>
 #import <Photos/PHPhotoLibrary.h>//相册权限
-#import <SDWebImage/SDWebImage.h>
+#import <SDWebImage/SDImageCache.h>
 
 @interface SettingViewController () <
     UIAlertViewDelegate,
@@ -167,7 +167,7 @@
         if (indexPath.row == 0) {
             label.text = @"版本信息";
         } else if (indexPath.row == 1) {
-            CGFloat size = (CGFloat)[[SDImageCache sharedImageCache] totalDiskSize]/1024/1024;
+            CGFloat size = (CGFloat)[[SDImageCache sharedImageCache] getSize]/1024/1024;
             NSString *tmp =[NSString stringWithFormat:@"%f",size];
             label.text = [NSString stringWithFormat:@"清除缓存(%@MB)",[tmp substringWithRange:NSMakeRange(0,4)]];
         } else {

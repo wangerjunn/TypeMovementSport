@@ -23,7 +23,6 @@
 #import "ElectronicCardViewController.h"//电子名片
 #import "ElectronicCardSuccessViewController.h"//电子名片获取成功
 #import "QrCodeViewController.h"//二维码扫码
-#import "QrScanViewController.h"
 
 //model
 #import "UserModel.h"
@@ -332,8 +331,7 @@
 
 #pragma mark -- 扫码领券
 - (void)scanQrGetCoupon {
-    QrScanViewController *qr = [QrScanViewController new];
-//    QrCodeViewController *qrCodeViewController = [[QrCodeViewController alloc] init];
+    QrCodeViewController *qr = [[QrCodeViewController alloc] init];
     qr.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:qr animated:YES];
 }

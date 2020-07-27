@@ -282,7 +282,9 @@
     req.message = message;
     req.scene = scene;
 
-    [WXApi sendReq:req];
+    [WXApi sendReq:req completion:^(BOOL success) {
+        
+    }];
 }
 
 - (void)shareToWb {

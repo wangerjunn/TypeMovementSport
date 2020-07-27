@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -82,8 +82,6 @@
 		186D59232151214F00B995D7 /* ZZGradientProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 186D59212151214F00B995D7 /* ZZGradientProgress.m */; };
 		18736AD621F81827004B2E22 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18736AD521F81827004B2E22 /* UserNotifications.framework */; };
 		1874930821E58E7A00948733 /* OrderPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185CFF56215E53B600FE5EF9 /* OrderPayViewController.m */; };
-		1874931B21E76F7300948733 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1874931821E76F7300948733 /* README.txt */; };
-		1874931C21E76F7300948733 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1874931A21E76F7300948733 /* libWeChatSDK.a */; };
 		1874932321E890A500948733 /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874932221E890A500948733 /* VideoModel.m */; };
 		187EEF762143C99F00DAFC23 /* HP_btnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187EEF752143C99F00DAFC23 /* HP_btnCollectionViewCell.m */; };
 		187EEF792143C9B700DAFC23 /* HP_videoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187EEF782143C9B700DAFC23 /* HP_videoCollectionViewCell.m */; };
@@ -308,7 +306,6 @@
 		21DC4D47214FAEA700858E74 /* AnswerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4D40214FAEA700858E74 /* AnswerCollectionViewCell.m */; };
 		21DC4D48214FAEA700858E74 /* AnswerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4D41214FAEA700858E74 /* AnswerListView.m */; };
 		21DC4D49214FAEA800858E74 /* AnswerTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4D45214FAEA700858E74 /* AnswerTableViewHeader.m */; };
-		FE223C7F230286BF008A6BE0 /* QrScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE223C7D230286BE008A6BE0 /* QrScanViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -463,11 +460,6 @@
 		186D59202151214F00B995D7 /* ZZGradientProgress.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZZGradientProgress.bundle; sourceTree = "<group>"; };
 		186D59212151214F00B995D7 /* ZZGradientProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZGradientProgress.m; sourceTree = "<group>"; };
 		18736AD521F81827004B2E22 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		1874931621E76F7300948733 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		1874931721E76F7300948733 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		1874931821E76F7300948733 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		1874931921E76F7300948733 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		1874931A21E76F7300948733 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		1874932121E890A500948733 /* VideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
 		1874932221E890A500948733 /* VideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
 		187EEF742143C99F00DAFC23 /* HP_btnCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HP_btnCollectionViewCell.h; sourceTree = "<group>"; };
@@ -923,8 +915,6 @@
 		523CB8C20566DB68AA1BFD0D /* Pods_TypeMovementSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TypeMovementSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		805EA3248C582B8148696F82 /* Pods-TypeMovementSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TypeMovementSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport.debug.xcconfig"; sourceTree = "<group>"; };
 		9BBAA86BD1B6E757E6899C94 /* Pods-TypeMovementSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TypeMovementSport.release.xcconfig"; path = "Pods/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport.release.xcconfig"; sourceTree = "<group>"; };
-		FE223C7D230286BE008A6BE0 /* QrScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QrScanViewController.m; sourceTree = "<group>"; };
-		FE223C7E230286BF008A6BE0 /* QrScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QrScanViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -945,7 +935,6 @@
 				18B3891121DA06E400CEA98F /* libopencore-amrwb.a in Frameworks */,
 				219F8D7A214B90C8006306E9 /* libz.tbd in Frameworks */,
 				219F8D78214B90C0006306E9 /* libc++.tbd in Frameworks */,
-				1874931C21E76F7300948733 /* libWeChatSDK.a in Frameworks */,
 				219F8D70214B9065006306E9 /* libsqlite3.tbd in Frameworks */,
 				18B3891221DA06E400CEA98F /* libopencore-amrnb.a in Frameworks */,
 				219F8D76214B909A006306E9 /* CoreTelephony.framework in Frameworks */,
@@ -1075,18 +1064,6 @@
 			);
 			name = ZZGradientProgress;
 			path = "New Group";
-			sourceTree = "<group>";
-		};
-		1874931521E76F7300948733 /* WeChatSDK1.8.3 */ = {
-			isa = PBXGroup;
-			children = (
-				1874931621E76F7300948733 /* WXApi.h */,
-				1874931721E76F7300948733 /* WXApiObject.h */,
-				1874931821E76F7300948733 /* README.txt */,
-				1874931921E76F7300948733 /* WechatAuthSDK.h */,
-				1874931A21E76F7300948733 /* libWeChatSDK.a */,
-			);
-			path = WeChatSDK1.8.3;
 			sourceTree = "<group>";
 		};
 		1874932021E8908F00948733 /* Model */ = {
@@ -1714,8 +1691,6 @@
 				18369C8521D4B43900EBF915 /* DevelopmentViewController.m */,
 				1855816422268A40001B5BBE /* QrCodeViewController.h */,
 				1855816522268A40001B5BBE /* QrCodeViewController.m */,
-				FE223C7E230286BF008A6BE0 /* QrScanViewController.h */,
-				FE223C7D230286BE008A6BE0 /* QrScanViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2142,7 +2117,6 @@
 			isa = PBXGroup;
 			children = (
 				188825E42212F22000D5DC92 /* SYCitySelectionController */,
-				1874931521E76F7300948733 /* WeChatSDK1.8.3 */,
 				18B3886721DA06E400CEA98F /* EaseUI */,
 				2190999B216D9698000C9A8D /* CLPlayer */,
 				186D59242151217800B995D7 /* ZZGradientProgress */,
@@ -2468,7 +2442,6 @@
 				187EEF922143D76400DAFC23 /* HP_btnConfig.plist in Resources */,
 				18B3898E21DA0F5E00CEA98F /* MWPhotoBrowser.bundle in Resources */,
 				1855816822269DE7001B5BBE /* 5383.mp3 in Resources */,
-				1874931B21E76F7300948733 /* README.txt in Resources */,
 				18369C8321D4AF6B00EBF915 /* configuration_dev.plist in Resources */,
 				18048EB621AFD1CA0097325A /* address_data_new2.plist in Resources */,
 			);
@@ -2513,31 +2486,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/AliyunOSSiOS/AliyunOSSiOS.framework",
-				"${PODS_ROOT}/HyphenateLite/iOS_Pods_IMSDK_V3.5.4/HyphenateLite.framework",
-				"${BUILT_PRODUCTS_DIR}/JSONKit/JSONKit.framework",
-				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunOSSiOS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HyphenateLite.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2567,15 +2521,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport-resources.sh",
-				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
-				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/Sina/SinaSDK/WeiboSDK.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/WeiboSDK.bundle",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2601,7 +2552,6 @@
 				18B3892221DA06E400CEA98F /* EaseViewController.m in Sources */,
 				18B3890221DA06E400CEA98F /* NSDate+Category.m in Sources */,
 				18048EB321AED3CA0097325A /* QuestionModel.m in Sources */,
-				FE223C7F230286BF008A6BE0 /* QrScanViewController.m in Sources */,
 				18664E63214CD387003B5382 /* ArticleDetailViewController.m in Sources */,
 				213B3B82212E9745009D7DA4 /* BaseListViewController.m in Sources */,
 				18B3891D21DA06E400CEA98F /* EaseLocationViewController.m in Sources */,
@@ -3022,7 +2972,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TypeMovementSport/TypeMovementSport.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 99N6PBC5W3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3052,7 +3002,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xingdong.hrmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b3218a-6fe8-4d00-884a-a1f4ac225a0b";
-				PROVISIONING_PROFILE_SPECIFIER = xingdongDev;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -3064,8 +3014,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TypeMovementSport/TypeMovementSport.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 99N6PBC5W3;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3095,7 +3045,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xingdong.hrmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b3218a-6fe8-4d00-884a-a1f4ac225a0b";
-				PROVISIONING_PROFILE_SPECIFIER = xingdongDis;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

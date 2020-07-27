@@ -122,7 +122,7 @@ static WebMonitors * __shared = nil;
     securityPolicy.allowInvalidCertificates = YES;
     manager.securityPolicy = securityPolicy;
     
-    [manager GET:urlString parameters:dict progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:urlString parameters:dict headers:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * task, id  responseObject) {
         NSDictionary * responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:nil];
@@ -212,7 +212,7 @@ static WebMonitors * __shared = nil;
         urlString = [kBaseUrl stringByAppendingString:urlString];
     }
     
-    [manager POST:urlString parameters:dict progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:urlString parameters:dict headers:nil   progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * task, id responseObject) {
         NSDictionary *responseDict = responseObject;
@@ -273,7 +273,7 @@ static WebMonitors * __shared = nil;
     securityPolicy.allowInvalidCertificates = YES;
     manager.securityPolicy = securityPolicy;
     
-    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:urlString parameters:dict headers:nil  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         int i = 0;
         for (UIImage * image in photoArr) {
             NSData * imageData = UIImageJPEGRepresentation(image, 0.1);

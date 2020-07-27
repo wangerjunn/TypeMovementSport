@@ -8,55 +8,20 @@
  */
 
 #import "UIImage+GIF.h"
-#import "SDImageGIFCoder.h"
+#import "SDWebImageGIFCoder.h"
+#import "NSImage+WebCache.h"
 
 @implementation UIImage (GIF)
 
-+ (nullable UIImage *)sd_imageWithGIFData:(nullable NSData *)data {
++ (UIImage *)sd_animatedGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
     }
-    return [[SDImageGIFCoder sharedCoder] decodedImageWithData:data options:0];
-}
-
-+ (UIImage *)sd_animatedGIFNamed:(NSString *)name {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    
-    if (scale > 1.0f) {
-        NSString *retinaPath = [[NSBundle mainBundle] pathForResource:[name stringByAppendingString:@"@2x"] ofType:@"gif"];
-        
-        NSData *data = [NSData dataWithContentsOfFile:retinaPath];
-        
-        if (data) {
-            return [UIImage sd_imageWithGIFData:data];
-        }
-        
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
-        
-        data = [NSData dataWithContentsOfFile:path];
-        
-        if (data) {
-            return [UIImage sd_imageWithGIFData:data];
-        }
-        
-        return [UIImage imageNamed:name];
-    }
-    else {
-        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
-        
-        NSData *data = [NSData dataWithContentsOfFile:path];
-        
-        if (data) {
-            return [UIImage sd_imageWithGIFData:data];
-        }
-        
-        return [UIImage imageNamed:name];
-    }
+    return [[SDWebImageGIFCoder sharedCoder] decodedImageWithData:data];
 }
 
 - (BOOL)isGIF {
     return (self.images != nil);
 }
-
 
 @end

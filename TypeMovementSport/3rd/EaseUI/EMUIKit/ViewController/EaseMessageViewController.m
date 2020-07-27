@@ -15,7 +15,7 @@
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "FLAnimatedImageView+WebCache.h"
 #import "UIImage+GIF.h"
 
 #import "NSDate+Category.h"
@@ -1149,7 +1149,10 @@ typedef enum : NSUInteger {
             if (_dataSource && [_dataSource respondsToSelector:@selector(emotionURLFormessageViewController:messageModel:)]) {
                 EaseEmotion *emotion = [_dataSource emotionURLFormessageViewController:self messageModel:model];
                 if (emotion) {
-                    model.image = [UIImage sd_animatedGIFNamed:emotion.emotionOriginal];
+                    
+                    NSString  *filePath = [[NSBundle bundleWithPath:[[NSBundle mainBundle] bundlePath]]pathForResource:emotion.emotionOriginal ofType:@"gif"];
+                    NSData  *imageData = [NSData dataWithContentsOfFile:filePath];
+                    model.image = [UIImage sd_animatedGIFWithData:imageData];
                     model.fileURLPath = emotion.emotionOriginalURL;
                 }
             }
