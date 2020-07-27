@@ -2988,7 +2988,7 @@
 					"\"${PODS_ROOT}/Headers/Public/UMengUShare\"",
 				);
 				INFOPLIST_FILE = TypeMovementSport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2999,7 +2999,7 @@
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/WeChatSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xingdong.hrmp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.salesvalley.tcpapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b3218a-6fe8-4d00-884a-a1f4ac225a0b";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3031,7 +3031,7 @@
 					"\"${PODS_ROOT}/Headers/Public/UMengUShare\"",
 				);
 				INFOPLIST_FILE = TypeMovementSport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3042,7 +3042,7 @@
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/WeChatSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xingdong.hrmp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.salesvalley.tcpapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b3218a-6fe8-4d00-884a-a1f4ac225a0b";
 				PROVISIONING_PROFILE_SPECIFIER = "";
