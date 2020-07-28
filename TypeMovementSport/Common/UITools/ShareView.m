@@ -9,7 +9,7 @@
 #import "ShareView.h"
 #import "WXApi.h"
 
-#import <UMengUShare/WeiboSDK.h>
+#import <UMCShare/WeiboSDK.h>
 
 @interface ShareView () {
     NSArray *sharePlatformsArray;//分享到的平台

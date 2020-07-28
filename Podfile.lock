@@ -33,20 +33,16 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SVProgressHUD (2.2.5)
-  - UMCAnalytics (6.1.0):
-    - UMCCommon
   - UMCCommon (7.1.1)
-  - UMCPush (3.2.4):
+  - UMCShare/Core (6.9.10):
     - UMCCommon
-  - UMCSecurityPlugins (1.0.6)
-  - UMengUShare/Core (6.4.8.2):
-    - UMengUShare/Network
-  - UMengUShare/Network (6.4.8.2)
-  - UMengUShare/Social/ReducedSina (6.4.8.2):
-    - UMengUShare/Core
-  - UMengUShare/Social/Sina (6.4.8.2):
-    - UMengUShare/Core
-    - UMengUShare/Social/ReducedSina
+  - UMCShare/Social/ReducedSina (6.9.10):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/Sina (6.9.10):
+    - UMCCommon
+    - UMCShare/Core
+    - UMCShare/Social/ReducedSina
   - WechatOpenSDK (1.8.7.1)
 
 DEPENDENCIES:
@@ -63,11 +59,8 @@ DEPENDENCIES:
   - SDWebImage
   - SDWebImage/GIF
   - SVProgressHUD
-  - UMCAnalytics
   - UMCCommon
-  - UMCPush
-  - UMCSecurityPlugins
-  - UMengUShare/Social/Sina
+  - UMCShare/Social/Sina
   - WechatOpenSDK
 
 SPEC REPOS:
@@ -86,11 +79,8 @@ SPEC REPOS:
     - MJRefresh
     - SDWebImage
     - SVProgressHUD
-    - UMCAnalytics
     - UMCCommon
-    - UMCPush
-    - UMCSecurityPlugins
-    - UMengUShare
+    - UMCShare
     - WechatOpenSDK
 
 SPEC CHECKSUMS:
@@ -108,13 +98,10 @@ SPEC CHECKSUMS:
   MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  UMCAnalytics: 3503f179f7af932b30af9ac161ac11fb48fa72b6
   UMCCommon: f455f92c125342e360d6ad9eafe484945351eeb5
-  UMCPush: 1edd856027dcf905333effb4040ace5d236a7316
-  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
-  UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
+  UMCShare: a4a95fbdd61ecce5b6751d8c9ed9b519e80fcbc9
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
 
-PODFILE CHECKSUM: fe7469d71abbdfbb089751634f249307ed912716
+PODFILE CHECKSUM: 82e97528d5778c24f4ac1276ca87bb1b2b611aa9
 
 COCOAPODS: 1.9.3

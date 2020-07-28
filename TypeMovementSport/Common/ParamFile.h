@@ -18,7 +18,9 @@
 #import "UIView+UIViewController.h"
 #import "UIColor+Hex.h"
 #import "Masonry.h"
-#import <UMAnalytics/MobClick.h>
+//#import <UMAnalytics/MobClick.h>
+#import <UMCommon/UMCommon.h>
+#import <UMCommon/MobClick.h>
 #import "JSONKit.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "NSObject+isNotEmpty.h"

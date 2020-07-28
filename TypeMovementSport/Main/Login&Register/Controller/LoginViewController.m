@@ -10,7 +10,7 @@
 #import "RegisterViewController.h"
 #import "AppDelegate.h"
 #import "WXApi.h"
-#import <UMengUShare/WeiboSDK.h>
+#import <UMCShare/WeiboSDK.h>
 
 #import "KeyChainStore.h"
 

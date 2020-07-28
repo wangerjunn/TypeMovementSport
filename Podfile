@@ -20,7 +20,7 @@ pod 'WechatOpenSDK'
 #pod 'UMengUShare/UI'
 
 # 集成新浪微博
-pod 'UMengUShare/Social/Sina'
+pod 'UMCShare/Social/Sina'
 
 # 集成微信
 #pod 'UMengUShare/Social/WeChat'
@@ -31,10 +31,10 @@ pod 'UMengUShare/Social/Sina'
 #pod 'UMengUShare/Social/SMS'
 
 
-pod 'UMCAnalytics'
+#pod 'UMCAnalytics'
 pod 'UMCCommon'
-pod 'UMCPush'
-pod 'UMCSecurityPlugins'
+#pod 'UMCPush'
+#pod 'UMCSecurityPlugins'
 
 # OSS
 pod 'AliyunOSSiOS'
