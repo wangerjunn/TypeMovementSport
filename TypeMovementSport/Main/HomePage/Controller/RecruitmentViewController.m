@@ -93,6 +93,7 @@ static NSString *kIsMultiple = @"isMultiple";
 - (void)displayLoginView {
     LoginViewController *login = [[LoginViewController alloc] init];
     BaseNavigationViewController *nav = [[BaseNavigationViewController alloc] initWithRootViewController:login];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
 }
 

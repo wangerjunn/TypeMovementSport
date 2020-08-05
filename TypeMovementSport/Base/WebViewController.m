@@ -65,17 +65,6 @@
     _httpUrl = httpUrl;
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_httpUrl]]];
 }
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
-    if ([[request.URL absoluteString]isEqualToString:@""]) {
-        
-        //需要做的事情
-        
-        return NO;
-    }
-    return YES;
-    
-}
 
 - (void)reload{
     [self.webView reload];

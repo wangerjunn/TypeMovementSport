@@ -17,6 +17,7 @@ pod "AMapSearch"
 pod "SVProgressHUD"
 pod "JSONKit"
 pod 'WechatOpenSDK'
+pod 'EaseUI'
 #pod 'UMengUShare/UI'
 
 # 集成新浪微博

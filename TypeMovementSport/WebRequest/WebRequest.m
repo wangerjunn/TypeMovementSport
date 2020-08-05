@@ -335,6 +335,7 @@ static WebMonitors * __shared = nil;
         if ([delegate.window.rootViewController isKindOfClass:[TabbarViewController class]]) {
             TabbarViewController *tabbar =(TabbarViewController *)delegate.window.rootViewController;
             tabbar.selectedIndex = 2;
+            nav.modalPresentationStyle = UIModalPresentationFullScreen;
             [delegate.window.rootViewController presentViewController:nav animated:YES completion:nil];
         }
         

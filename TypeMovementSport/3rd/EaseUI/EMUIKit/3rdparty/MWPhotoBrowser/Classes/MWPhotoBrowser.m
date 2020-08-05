@@ -1220,6 +1220,7 @@ static void * MWVideoPlayerObservation = &MWVideoPlayerObservation;
                                                object:_currentVideoPlayerViewController.moviePlayer];
 
     // Show
+    _currentVideoPlayerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:_currentVideoPlayerViewController animated:YES completion:nil];
 
 }

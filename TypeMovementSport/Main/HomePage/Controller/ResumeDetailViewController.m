@@ -374,6 +374,7 @@
         
         TO_WEAK(self, weakSelf);
         cell.ClickHeadBlock = ^{
+            weakSelf.photoNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
             [weakSelf presentViewController:weakSelf.photoNavigationController animated:YES completion:nil];
         };
         return cell;

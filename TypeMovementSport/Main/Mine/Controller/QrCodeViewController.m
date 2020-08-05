@@ -59,6 +59,7 @@
     } else {
         // Fallback on earlier versions
     }
+    mediaUI.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:mediaUI animated:YES completion:^{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         

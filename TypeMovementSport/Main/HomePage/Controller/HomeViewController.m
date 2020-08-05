@@ -605,6 +605,7 @@ static NSString *kIsMultiple = @"isMultiple";
         play.user_tel =userModel.phone;
     }
     self.hidesBottomBarWhenPushed = YES;
+    play.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:play animated:YES completion:nil];
     self.hidesBottomBarWhenPushed = NO;
 }
@@ -671,6 +672,7 @@ static NSString *kIsMultiple = @"isMultiple";
 - (void)displayLoginView {
     LoginViewController *login = [[LoginViewController alloc] init];
     BaseNavigationViewController *nav = [[BaseNavigationViewController alloc] initWithRootViewController:login];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
 }
 

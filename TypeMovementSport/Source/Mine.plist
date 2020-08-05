@@ -74,5 +74,21 @@
 		<key>action</key>
 		<string>supportUs</string>
 	</dict>
+	<dict>
+		<key>title</key>
+		<string>我要求职</string>
+		<key>icon</key>
+		<string>HP_job</string>
+		<key>action</key>
+		<string>wantToJob</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>我要招聘</string>
+		<key>icon</key>
+		<string>HP_ recruit</string>
+		<key>action</key>
+		<string>wantToRecruit</string>
+	</dict>
 </array>
 </plist>

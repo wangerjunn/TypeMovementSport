@@ -148,6 +148,7 @@ static EaseMessageReadManager *detailInstance = nil;
     }
     
     UIViewController *rootController = [self.keyWindow rootViewController];
+    self.photoNavigationController.modalPresentationStyle = UIModalPresentationFullScreen;
     [rootController presentViewController:self.photoNavigationController animated:YES completion:nil];
 }
 

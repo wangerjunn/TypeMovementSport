@@ -399,6 +399,7 @@
        //显示购买页
         [weakSelf clickPurchase];
     };
+    play.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:play animated:YES completion:nil];
 }
 

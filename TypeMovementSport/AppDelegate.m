@@ -476,6 +476,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                 
                 LoginViewController *login = [[LoginViewController alloc] init];
                 BaseNavigationViewController *nav = [[BaseNavigationViewController alloc] initWithRootViewController:login];
+                nav.modalPresentationStyle = UIModalPresentationFullScreen;
                 [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
                 return NO;
             }

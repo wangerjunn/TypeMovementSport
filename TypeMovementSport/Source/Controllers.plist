@@ -34,13 +34,13 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>减脂</string>
+		<string>成绩查询</string>
 		<key>iconNormal</key>
 		<string>loseFat_normal</string>
 		<key>iconSelect</key>
 		<string>loseFat_sele</string>
 		<key>className</key>
-		<string>LoseFatViewController</string>
+		<string>CerOrRecordQueryViewController</string>
 	</dict>
 	<dict>
 		<key>title</key>

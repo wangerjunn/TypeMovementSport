@@ -50,8 +50,9 @@ static
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self setMyTitle:_navTitle?_navTitle:@""];
+    [self setMyTitle:_navTitle?_navTitle:@"国家职业资格教练认证成绩/成绩查询"];
     countdown = 60;
+    [self hiddenBackBtn];
     [self createUI];
 }
 
@@ -272,6 +273,7 @@ static
 - (void)displayLoginView {
     LoginViewController *login = [[LoginViewController alloc] init];
     BaseNavigationViewController *nav = [[BaseNavigationViewController alloc] initWithRootViewController:login];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
 }
 

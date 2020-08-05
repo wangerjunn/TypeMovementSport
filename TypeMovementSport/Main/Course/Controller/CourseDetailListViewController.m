@@ -180,6 +180,7 @@
         play.videoId = @"20";
         play.time_limit_flag = 0;
         play.VideoType = @"star";
+        play.modalPresentationStyle = UIModalPresentationFullScreen;
         [self presentViewController:play animated:YES completion:nil];
         return;
     }

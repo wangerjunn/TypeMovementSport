@@ -97,25 +97,6 @@
     [self.navigationController pushViewController:orderPay animated:YES];
 }
 
--(void)webViewDidStartLoad:(UIWebView *)webView{
-    
-}
-
-//-(void)webViewDidFinishLoad:(UIWebView *)theWebView{
-//    if (!webView.isLoading) {
-////        [SVProgressHUD dismiss];
-//    }
-//
-//    CGSize contentSize = theWebView.scrollView.contentSize;
-//    CGSize viewSize = self.view.bounds.size;
-//
-//    float rw = viewSize.width / contentSize.width;
-//
-//    theWebView.scrollView.minimumZoomScale = rw;
-//    theWebView.scrollView.maximumZoomScale = rw;
-//    theWebView.scrollView.zoomScale = rw;
-//
-//}
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];

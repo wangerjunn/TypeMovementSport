@@ -4,27 +4,11 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>国职认证</string>
-		<key>icon</key>
-		<string>HP_ cerQuery</string>
-		<key>action</key>
-		<string>certificateQuery</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>成绩查询</string>
+		<string>极简运动</string>
 		<key>icon</key>
 		<string>HP_gradeQuery</string>
 		<key>action</key>
-		<string>gradeQuery</string>
-	</dict>
-	<dict>
-		<key>title</key>
-		<string>进阶课程</string>
-		<key>icon</key>
-		<string>HP_elecCard</string>
-		<key>action</key>
-		<string>showIncreaseVideo</string>
+		<string>simpleSport</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -36,19 +20,35 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>我要求职</string>
+		<string>精品课程</string>
 		<key>icon</key>
-		<string>HP_job</string>
+		<string>HP_elecCard</string>
 		<key>action</key>
-		<string>wantToJob</string>
+		<string>showIncreaseVideo</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>我要招聘</string>
+		<string>孕产管理</string>
+		<key>icon</key>
+		<string>HP_job</string>
+		<key>action</key>
+		<string>pregnantManage</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>功能性训练</string>
 		<key>icon</key>
 		<string>HP_ recruit</string>
 		<key>action</key>
-		<string>wantToRecruit</string>
+		<string>funcTraining</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>国职认证</string>
+		<key>icon</key>
+		<string>HP_ cerQuery</string>
+		<key>action</key>
+		<string>certificateQuery</string>
 	</dict>
 </array>
 </plist>

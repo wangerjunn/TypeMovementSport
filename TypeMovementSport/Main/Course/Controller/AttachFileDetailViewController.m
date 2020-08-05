@@ -8,12 +8,12 @@
 
 #import "AttachFileDetailViewController.h"
 #import <AFNetworking/AFNetworking.h>
-
-@interface AttachFileDetailViewController () <UIWebViewDelegate>
+#import <WebKit/WebKit.h>
+@interface AttachFileDetailViewController () <WKNavigationDelegate>
 
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, copy) NSString *attachFileUrlString;
-@property (nonatomic, strong) UIWebView *previewWebView;
+@property (nonatomic, strong) WKWebView *previewWebView;
 @property (nonatomic, strong) NSURL *fileURL;
 
 @end
@@ -47,7 +47,9 @@
             
             NSData *data = [NSData dataWithContentsOfFile:filePath];
             // 加载二进制文件
-            [self.previewWebView loadData:data MIMEType:@"text/html" textEncodingName:@"GBK" baseURL:nil];
+            
+            [self.previewWebView loadData:data MIMEType:@"text/html" characterEncodingName:@"GBK" baseURL:nil];
+//            [self.previewWebView loadData:data MIMEType:@"text/html" textEncodingName:@"GBK" baseURL:nil];
 //            [self.previewWebView loadData:data MIMEType:@"text/html" characterEncodingName:@"GBK" baseURL:nil];
         }else {
             NSURL *fileURL = [NSURL URLWithString:filePath];
@@ -65,14 +67,35 @@
     _attachFileUrlString = attachFileUrlString;
 }
 
-- (UIWebView *)previewWebView {
+- (WKWebView *)previewWebView {
     
     if (!_previewWebView) {
-        _previewWebView =[[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight)];
+        
+        NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+        WKUserContentController *wkUController = [[WKUserContentController alloc] init];
+        [wkUController addUserScript:wkUScript];
+        
+        //创建网页配置对象
+        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+             
+         // 创建设置对象
+         WKPreferences *preference = [[WKPreferences alloc]init];
+         
+         // 在iOS上默认为NO，表示是否允许不经过用户交互由javaScript自动打开窗口
+         preference.javaScriptCanOpenWindowsAutomatically = YES;
+         config.preferences = preference;
+         config.userContentController = wkUController;
+        _previewWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight) configuration:config];
+        _previewWebView.navigationDelegate = self;
+
+        
+        
+//        _previewWebView =[[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight)];
     }
     
-    _previewWebView.delegate = self;
-    _previewWebView.scalesPageToFit = YES;
+//    _previewWebView.delegate = self;
+//    _previewWebView.scalesPageToFit = YES;
     return _previewWebView;
     
 }
@@ -114,7 +137,7 @@
                 
                 NSData *data = [NSData dataWithContentsOfFile:filePath.absoluteString];
                 // 加载二进制文件
-                [self.previewWebView loadData:data MIMEType:@"text/html" textEncodingName:@"GBK" baseURL:nil];
+                [self.previewWebView loadData:data MIMEType:@"text/html" characterEncodingName:@"GBK" baseURL:nil];
                 //            [self.previewWebView loadData:data MIMEType:@"text/html" characterEncodingName:@"GBK" baseURL:nil];
             }else {
                 
@@ -138,15 +161,15 @@
     return documentsDirectoryPath;
 }
 
-#pragma mark -- UIWebViewDelegate
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self stopLoadingAnimation];
-}
-
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    [self stopLoadingAnimation];
-}
+//#pragma mark -- UIWebViewDelegate
+//- (void)webViewDidFinishLoad:(UIWebView *)webView {
+//    [self stopLoadingAnimation];
+//}
+//
+//
+//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+//    [self stopLoadingAnimation];
+//}
 /*
 #pragma mark - Navigation
 

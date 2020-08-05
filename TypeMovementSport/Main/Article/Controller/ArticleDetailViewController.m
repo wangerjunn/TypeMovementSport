@@ -28,11 +28,11 @@
 //    WKNavigationDelegate,
     UITableViewDelegate,
     UITableViewDataSource,
-    UIWebViewDelegate> {
+    WKNavigationDelegate> {
         
         UIView *allCommentsView;
         UIView *placeHolderView;
-        UIWebView *_webView;
+        WKWebView *_webView;
 //        WKWebView *_webView;
         UIView *_collectionView;
         UIView *_commentView;
@@ -95,31 +95,36 @@
 - (void)tableHeader{
     mainHeaderView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
     
-////    //以下代码适配大小
-//    NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
-//
-//    WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-//    WKUserContentController *wkUController = [[WKUserContentController alloc] init];
-//    [wkUController addUserScript:wkUScript];
-//
-//    WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
-//    wkWebConfig.userContentController = wkUController;
-   
-//    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 20, mainHeaderView.width, mainTable.height) configuration:wkWebConfig];
-//    _webView.navigationDelegate = self;
     
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, mainHeaderView.width, 100)];
+    NSString *jScript =
+    @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta); var imgs = document.getElementsByTagName('img');for (var i in imgs){imgs[i].style.maxWidth='100%';imgs[i].style.height='auto';}";
+    
+    WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+    WKUserContentController *wkUController = [[WKUserContentController alloc] init];
+    [wkUController addUserScript:wkUScript];
+    
+    //创建网页配置对象
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+         
+     // 创建设置对象
+     WKPreferences *preference = [[WKPreferences alloc]init];
+         
+    // 在iOS上默认为NO，表示是否允许不经过用户交互由javaScript自动打开窗口
+    preference.javaScriptCanOpenWindowsAutomatically = YES;
+    config.preferences = preference;
+    config.userContentController = wkUController;
+            
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 20, mainHeaderView.width, 100) configuration:config];
+    _webView.navigationDelegate = self;
+  
+//        NSString *webString = self.model.content;
+//        [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webString]]];
+    
+    
+//    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, mainHeaderView.width, 100)];
 //    NSMutableURLRequest *request;
-   _webView.delegate = self;
-//    _webView.scalesPageToFit = YES;
-    
-//    NSString *url = [NSString stringWithFormat:@"%@%zi",kWebArticle,self.articleId];
-//    request = [[NSMutableURLRequest alloc]initWithURL:[NSURL URLWithString:url]
-//                                          cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
-//    request.HTTPShouldHandleCookies = YES;
-//
-//    [_webView loadRequest:request];
-//    [_webView loadHTMLString:_model.content baseURL:nil];
+//   _webView.delegate = self;
+
     _webView.backgroundColor = [UIColor whiteColor];
     mainHeaderView.backgroundColor = [UIColor whiteColor];
     [mainHeaderView addSubview:_webView];
@@ -260,27 +265,34 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
     
 ////    __block CGFloat htmlWidth = 0;
-   __block  CGFloat htmlHeight = 0;
 
     TO_WEAK(self, weakSelf);
-    [webView evaluateJavaScript:@"document.body.offsetHeight" completionHandler:^(id _Nullable resp, NSError * _Nullable error) {
-        if (!error) {
-            htmlHeight = [resp floatValue];
+    [webView evaluateJavaScript:@"document.body.offsetHeight;" completionHandler:^(id _Nullable any, NSError * _Nullable error) {
+        
+        NSString *heightStr = [NSString stringWithFormat:@"%@",any];
 
-            [weakSelf updateWebViewByHeight:htmlHeight];
-        }
-    }];
+        [weakSelf updateWebViewByHeight:heightStr.floatValue];
+  
+        }];
+    
+//    [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable resp, NSError * _Nullable error) {
+//        if (!error) {
+//            htmlHeight = [resp floatValue];
+//
+//            [weakSelf updateWebViewByHeight:htmlHeight];
+//        }
+//    }];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    //HTML5的高度
-    NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
-    
-    
-    [self updateWebViewByHeight:[htmlHeight floatValue]];
-    
-}
+//- (void)webViewDidFinishLoad:(UIWebView *)webView
+//{
+//    //HTML5的高度
+//    NSString *htmlHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"];
+//    
+//    
+//    [self updateWebViewByHeight:[htmlHeight floatValue]];
+//    
+//}
 
 
 - (void)updateWebViewByHeight:(CGFloat)htmlHeight {
@@ -365,6 +377,7 @@
 - (void)displayLoginView {
     LoginViewController *login = [[LoginViewController alloc] init];
     BaseNavigationViewController *nav = [[BaseNavigationViewController alloc] initWithRootViewController:login];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -388,7 +401,15 @@
 //                                                  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
 //            request.HTTPShouldHandleCookies = YES;
 //            [strongSelf->_webView loadRequest:request];
-            [strongSelf->_webView loadHTMLString:strongSelf.model.content baseURL:nil];
+            
+            NSString *header = @"<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title></title></head>";
+            NSString *js = @"</html>";
+            NSMutableString *mutableString = [NSMutableString stringWithString:header];
+            [mutableString appendFormat:@"%@", strongSelf.model.content];
+            [mutableString appendString:js];
+            [strongSelf->_webView loadHTMLString:mutableString baseURL:nil];
+            
+    
             
             if (strongSelf.model.isCollection) {
                 UIImageView *icon = (UIImageView *)[strongSelf->_collectionView viewWithTag:1];

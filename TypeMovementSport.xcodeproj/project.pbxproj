@@ -969,6 +969,7 @@
 				187EEF912143D76400DAFC23 /* HP_btnConfig.plist */,
 				18697ABD21416858005D4DCE /* Mine.plist */,
 				18048EB521AFD1C90097325A /* address_data_new2.plist */,
+				219DBAE5212D4EC80052396A /* Controllers.plist */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2260,7 +2261,6 @@
 		219DBAE4212D4EA30052396A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				219DBAE5212D4EC80052396A /* Controllers.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
