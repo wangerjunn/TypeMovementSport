@@ -33,7 +33,8 @@
     }];
     
     
-    self.icon = [[UIImageView alloc]init];    
+    self.icon = [[UIImageView alloc]init];
+    self.icon.contentMode = UIViewContentModeScaleAspectFit;
     [self.btnView addSubview:self.icon];
     
     [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {

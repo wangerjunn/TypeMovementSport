@@ -6,15 +6,15 @@
 		<key>title</key>
 		<string>极简运动</string>
 		<key>icon</key>
-		<string>HP_gradeQuery</string>
+		<string>HP_jjyd</string>
 		<key>action</key>
 		<string>simpleSport</string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>减脂塑形</string>
+		<string>极致运动</string>
 		<key>icon</key>
-		<string>HP_loseFat</string>
+		<string>HP_jzyd</string>
 		<key>action</key>
 		<string>loseFatAction</string>
 	</dict>
@@ -22,7 +22,7 @@
 		<key>title</key>
 		<string>精品课程</string>
 		<key>icon</key>
-		<string>HP_elecCard</string>
+		<string>HP_jpkc</string>
 		<key>action</key>
 		<string>showIncreaseVideo</string>
 	</dict>
@@ -30,7 +30,7 @@
 		<key>title</key>
 		<string>孕产管理</string>
 		<key>icon</key>
-		<string>HP_job</string>
+		<string>HP_ycgl</string>
 		<key>action</key>
 		<string>pregnantManage</string>
 	</dict>
@@ -38,7 +38,7 @@
 		<key>title</key>
 		<string>功能性训练</string>
 		<key>icon</key>
-		<string>HP_ recruit</string>
+		<string>HP_gnxxl</string>
 		<key>action</key>
 		<string>funcTraining</string>
 	</dict>
@@ -46,7 +46,7 @@
 		<key>title</key>
 		<string>国职认证</string>
 		<key>icon</key>
-		<string>HP_ cerQuery</string>
+		<string>HP_gzrz</string>
 		<key>action</key>
 		<string>certificateQuery</string>
 	</dict>
