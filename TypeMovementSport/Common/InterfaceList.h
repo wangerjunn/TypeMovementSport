@@ -46,7 +46,7 @@
 #define kUserCouponBagReceive @"api/userCouponBag/receive"//扫码领取优惠券
 
 #pragma mark -- 首页接口
-#define kHomePage @"public/index/index"//首页接口
+#define kHomePage @"public/index/index1"//首页接口
 
 #pragma mark --登录注册
 #define kSendCode @"public/sms/sendCode"//获取短信验证码(开发环境发送成功后,验证码为0000)

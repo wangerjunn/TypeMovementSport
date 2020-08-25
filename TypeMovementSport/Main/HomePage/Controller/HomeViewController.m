@@ -550,6 +550,50 @@ static NSString *kIsMultiple = @"isMultiple";
     [self.navigationController pushViewController:loseFat animated:YES];
 }
 
+#pragma mark -- 极简运动
+- (void)simpleSport {
+    [self displayTopBtnEvent:@"Course 极简运动" viewEnglishTitle:@"MinimalistSports" typeId:@"287"];
+}
+
+
+#pragma mark -- 极致运动
+- (void)extremeSport {
+    [self displayTopBtnEvent:@"Course 极致运动" viewEnglishTitle:@"ExtremeSports" typeId:@"288"];
+}
+
+
+#pragma mark -- 精品课程
+- (void)excellentCourse {
+    [self displayTopBtnEvent:@"Course 精品课程" viewEnglishTitle:@"ExcellentCourse" typeId:@"289"];
+}
+
+
+#pragma mark -- 孕产管理
+- (void)pregnantManage {
+    [self displayTopBtnEvent:@"Course 孕产管理" viewEnglishTitle:@"MaternalManagement" typeId:@"290"];
+}
+
+
+#pragma mark -- 功能性训练
+- (void)funcTraining {
+    [self displayTopBtnEvent:@"Course 功能性训练" viewEnglishTitle:@"FunctionalTraining" typeId:@"291"];
+}
+
+- (void)displayTopBtnEvent:(NSString *)viewTitle viewEnglishTitle:(NSString *)viewEnglishTitle typeId:(NSString *)typeId {
+    [MobClick event:[NSString stringWithFormat:@"首页，%@",viewTitle]];
+    if (![Tools isLoginAccount]) {
+        [self displayLoginView];
+        return;
+    }
+    
+    LoseFatViewController *loseFat = [LoseFatViewController new];
+    loseFat.viewTitle = viewTitle;
+    loseFat.viewEnglishTitle = viewEnglishTitle;
+    loseFat.typeId = typeId;
+    loseFat.isFromHomePage = YES;
+    loseFat.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:loseFat animated:YES];
+}
 #pragma mark -- 国职认证
 - (void)certificateQuery {
     [MobClick event:@"首页，国职认证"];
@@ -651,6 +695,7 @@ static NSString *kIsMultiple = @"isMultiple";
         }
     }
 }
+
 
 #pragma mark --进阶课程
 - (void)showIncreaseVideo {

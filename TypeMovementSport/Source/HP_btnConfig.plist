@@ -16,7 +16,7 @@
 		<key>icon</key>
 		<string>HP_jzyd</string>
 		<key>action</key>
-		<string>loseFatAction</string>
+		<string>extremeSport</string>
 	</dict>
 	<dict>
 		<key>title</key>
@@ -24,7 +24,7 @@
 		<key>icon</key>
 		<string>HP_jpkc</string>
 		<key>action</key>
-		<string>showIncreaseVideo</string>
+		<string>excellentCourse</string>
 	</dict>
 	<dict>
 		<key>title</key>

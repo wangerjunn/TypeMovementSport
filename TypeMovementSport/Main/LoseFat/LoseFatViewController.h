@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LoseFatViewController : BaseViewController
 
+@property (nonatomic, strong) NSString *viewTitle;
+@property (nonatomic, strong) NSString *viewEnglishTitle;
+@property (nonatomic, strong) NSString *typeId;//类型ID
 @property (nonatomic, assign) BOOL isFromHomePage;
 
 @end

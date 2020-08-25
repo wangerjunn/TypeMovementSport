@@ -172,7 +172,7 @@
     }
     
 //    if (!self.isFromHomePageIncreaseCourse) {
-        NSArray *titles = @[@"国职理论",@"国职实操",@"进阶课程"];
+        NSArray *titles = @[@"国职理论",@"国职实操",@"进阶课程",@"减脂",@"一冰的世界",@""];
 //        if (self.isFromHomePageCountryProfession) {
 //            titles = @[@"国职理论",@"国职实操"];
 //        }

@@ -54,7 +54,7 @@
     // Do any additional setup after loading the view.
     
     [self hiddenBackBtn];
-    UIView *topView = [[BoldNavigationTitleView alloc] initBoldNavigationTitleView:@"LoseFat 减脂" boldPart:@"LoseFat"];
+    UIView *topView = [[BoldNavigationTitleView alloc] initBoldNavigationTitleView:_viewTitle?_viewTitle:@"LoseFat 减脂" boldPart:@"Course"];
     
     if (self.isFromHomePage) {
         UIButton *cancelBtn = [ButtonTool createButtonWithImageName:@"general_cancel" addTarget:self action:@selector(goBack)];
@@ -177,7 +177,7 @@
         courseList.hidesBottomBarWhenPushed = YES;
         courseList.videoTypeId = model.id;
         courseList.viewTitle = model.name;
-        courseList.EnglishTitle = @"LoseFat";
+        courseList.EnglishTitle = _viewEnglishTitle?_viewEnglishTitle:@"LoseFat";
         courseList.totalPrice = model.price/100;
         courseList.videoEnum = Course_theoryVideo;
         [courseList setModel:model];
@@ -202,7 +202,7 @@
 - (void)getVideoDataList {
     
     NSDictionary *para = @{
-                           @"id":@(266)
+        @"id":_typeId?_typeId:@"266"
                            };
     
     TO_WEAK(self, weakSelf);
