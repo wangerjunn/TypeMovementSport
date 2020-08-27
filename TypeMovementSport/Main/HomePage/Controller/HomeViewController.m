@@ -404,6 +404,7 @@ static NSString *kIsMultiple = @"isMultiple";
     }
     
     if (indexPath.section == self.dynamiacArr.count + 2) {
+        //文章列表
         ArticleListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (!cell) {
             cell = [[ArticleListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
@@ -680,14 +681,19 @@ static NSString *kIsMultiple = @"isMultiple";
         }
         NSDictionary *dicInfo = self.dynamiacArr[tap.view.tag-1 - 2];
         NSString *tmpId = [NSString stringWithFormat:@"%@",dicInfo[@"id"]?dicInfo[@"id"]:@""];
-        if ([tmpId isEqualToString:@"39"] || [tmpId isEqualToString:@"44"]) {
-            BaseNavigationViewController *baseNav =  (BaseNavigationViewController *)tabar.viewControllers[3];
+        if ([tmpId isEqualToString:@"39"] || [tmpId isEqualToString:@"44"] || [tmpId isEqualToString:@"286"]) {
+            //39 国职认证 ，44 进阶课程
+            BaseNavigationViewController *baseNav =  (BaseNavigationViewController *)tabar.viewControllers[0];
             if ([baseNav.viewControllers.firstObject isKindOfClass:[CourseViewController class]]) {
                 CourseViewController *course = baseNav.viewControllers.firstObject;
                 if ([tmpId isEqualToString:@"39"]) {
                     [course selectIndex:1];
-                }else {
-                    [course selectIndex:2];
+                }else if ([tmpId isEqualToString:@"44"]) {
+                    //进阶
+                    [course selectIndex:1];
+                }else if ([tmpId isEqualToString:@"286"]) {
+                    //一冰的世界
+                    [course selectIndex:4];
                 }
                 
                 [tabar setSelectedIndex:0];
@@ -759,6 +765,18 @@ static NSString *kIsMultiple = @"isMultiple";
                 [strongSelf->examArray addObject:model];
             }
             
+            if (dict[@"guozhi"]) {
+                [self.dynamiacArr addObject:dict[@"guozhi"]];
+            }
+            
+            if (dict[@"jinjie"]) {
+                [self.dynamiacArr addObject:dict[@"jinjie"]];
+            }
+            
+            if (dict[@"yibing"]) {
+                [self.dynamiacArr addObject:dict[@"yibing"]];
+            }
+      
             /*
              "videoList": [
              [
