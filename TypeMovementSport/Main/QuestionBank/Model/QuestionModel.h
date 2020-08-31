@@ -78,5 +78,7 @@
 @property (nonatomic, copy) NSString *pdf;//购买全套课程后赠送PDF文档
 
 @property (nonatomic, assign) BOOL isPurchase;//弹框列表时使用
+@property (nonatomic, strong) NSDictionary *parent;
+
 @end
 

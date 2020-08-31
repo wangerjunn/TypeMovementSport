@@ -306,6 +306,8 @@
 		21DC4D47214FAEA700858E74 /* AnswerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4D40214FAEA700858E74 /* AnswerCollectionViewCell.m */; };
 		21DC4D48214FAEA700858E74 /* AnswerListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4D41214FAEA700858E74 /* AnswerListView.m */; };
 		21DC4D49214FAEA800858E74 /* AnswerTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DC4D45214FAEA700858E74 /* AnswerTableViewHeader.m */; };
+		FEA3E79824FD14C80009BE2B /* Course_lostFat.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA3E79724FD14C80009BE2B /* Course_lostFat.m */; };
+		FEA3E79B24FD17BC0009BE2B /* Course_yiBingWorldView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA3E79A24FD17BC0009BE2B /* Course_yiBingWorldView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -915,6 +917,10 @@
 		523CB8C20566DB68AA1BFD0D /* Pods_TypeMovementSport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TypeMovementSport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		805EA3248C582B8148696F82 /* Pods-TypeMovementSport.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TypeMovementSport.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport.debug.xcconfig"; sourceTree = "<group>"; };
 		9BBAA86BD1B6E757E6899C94 /* Pods-TypeMovementSport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TypeMovementSport.release.xcconfig"; path = "Pods/Target Support Files/Pods-TypeMovementSport/Pods-TypeMovementSport.release.xcconfig"; sourceTree = "<group>"; };
+		FEA3E79624FD14C80009BE2B /* Course_lostFat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Course_lostFat.h; sourceTree = "<group>"; };
+		FEA3E79724FD14C80009BE2B /* Course_lostFat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Course_lostFat.m; sourceTree = "<group>"; };
+		FEA3E79924FD17BC0009BE2B /* Course_yiBingWorldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Course_yiBingWorldView.h; sourceTree = "<group>"; };
+		FEA3E79A24FD17BC0009BE2B /* Course_yiBingWorldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Course_yiBingWorldView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1897,6 +1903,10 @@
 				181E23A921CA25B100D091A0 /* Course_SecondLevelCell.m */,
 				18BC4ADA21CD2FD200A5B770 /* Course_thirdDataView.h */,
 				18BC4ADB21CD2FD200A5B770 /* Course_thirdDataView.m */,
+				FEA3E79624FD14C80009BE2B /* Course_lostFat.h */,
+				FEA3E79724FD14C80009BE2B /* Course_lostFat.m */,
+				FEA3E79924FD17BC0009BE2B /* Course_yiBingWorldView.h */,
+				FEA3E79A24FD17BC0009BE2B /* Course_yiBingWorldView.m */,
 				218E5D962148ABB1009365CC /* Course_increaseVideoView */,
 				214CE8D42147C82C00BA16C7 /* Course_actualOperationView */,
 				214CE8D02147669500BA16C7 /* Course_theoryView */,
@@ -2568,6 +2578,7 @@
 				219DBAE9212D547C0052396A /* WebRequest.m in Sources */,
 				18F4A9D4214018B4001AA29D /* UIView+UIViewController.m in Sources */,
 				18F5569A218EA0B400F8A049 /* ArticleCommentView.m in Sources */,
+				FEA3E79824FD14C80009BE2B /* Course_lostFat.m in Sources */,
 				219221EB214670C800E396CD /* Course_theoryView.m in Sources */,
 				1881A60921AD625400916829 /* ResumeManagementView.m in Sources */,
 				219DBAE0212D420D0052396A /* WebViewController.m in Sources */,
@@ -2714,6 +2725,7 @@
 				1827166F21F0584A00609018 /* CerOrRecordQueryResultViewController.m in Sources */,
 				1827167521F0654D00609018 /* CerSearchHeaderView.m in Sources */,
 				18664E66214D05DB003B5382 /* QuestionListViewController.m in Sources */,
+				FEA3E79B24FD17BC0009BE2B /* Course_yiBingWorldView.m in Sources */,
 				18B3892B21DA06E400CEA98F /* EaseFacialView.m in Sources */,
 				1844DC7721C29AD00077CA49 /* Tools.m in Sources */,
 				214CE8C921475B1200BA16C7 /* Course_theoryHeaderCell.m in Sources */,

@@ -553,6 +553,7 @@ static NSString *kIsMultiple = @"isMultiple";
 
 #pragma mark -- 极简运动
 - (void)simpleSport {
+    [self loseFatAction];return;
     [self displayTopBtnEvent:@"Course 极简运动" viewEnglishTitle:@"MinimalistSports" typeId:@"287"];
 }
 
@@ -690,7 +691,7 @@ static NSString *kIsMultiple = @"isMultiple";
                     [course selectIndex:1];
                 }else if ([tmpId isEqualToString:@"44"]) {
                     //进阶
-                    [course selectIndex:1];
+                    [course selectIndex:2];
                 }else if ([tmpId isEqualToString:@"286"]) {
                     //一冰的世界
                     [course selectIndex:4];

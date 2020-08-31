@@ -34,7 +34,7 @@
     
     
     self.icon = [[UIImageView alloc]init];
-    self.icon.contentMode = UIViewContentModeScaleAspectFit;
+    self.icon.contentMode = UIViewContentModeScaleAspectFill;
     [self.btnView addSubview:self.icon];
     
     [self.icon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,7 +43,7 @@
         make.height.mas_equalTo(FIT_SCREEN_WIDTH(73));
         make.centerX.mas_equalTo(self.btnView);
     }];
-    
+
     self.titleLabel = [LabelTool createLableWithTextColor:k75Color font:Font(K_TEXT_FONT_12)];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.btnView addSubview:self.titleLabel];

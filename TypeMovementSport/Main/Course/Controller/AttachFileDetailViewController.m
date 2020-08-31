@@ -89,13 +89,8 @@
         _previewWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight) configuration:config];
         _previewWebView.navigationDelegate = self;
 
-        
-        
-//        _previewWebView =[[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight)];
     }
     
-//    _previewWebView.delegate = self;
-//    _previewWebView.scalesPageToFit = YES;
     return _previewWebView;
     
 }

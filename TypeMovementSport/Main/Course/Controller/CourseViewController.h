@@ -9,7 +9,9 @@
 typedef enum : NSUInteger {
     Course_theoryVideo,//国职理论
     Course_actOpeVideo,//国职实操
-    Course_increaseVideo//进阶课程
+    Course_increaseVideo,//进阶课程
+    Course_loseFatVideo,//减脂
+    Course_yibingWorldVideo//一冰的世界
 } CourseVideoEnum;
 
 #import "BaseViewController.h"

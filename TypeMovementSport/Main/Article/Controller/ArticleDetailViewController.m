@@ -116,14 +116,6 @@
             
     _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 20, mainHeaderView.width, 100) configuration:config];
     _webView.navigationDelegate = self;
-  
-//        NSString *webString = self.model.content;
-//        [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:webString]]];
-    
-    
-//    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, mainHeaderView.width, 100)];
-//    NSMutableURLRequest *request;
-//   _webView.delegate = self;
 
     _webView.backgroundColor = [UIColor whiteColor];
     mainHeaderView.backgroundColor = [UIColor whiteColor];

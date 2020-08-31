@@ -13,6 +13,9 @@
 #import "Course_theoryView.h"//国职理论view
 #import "Course_actOpeSubView.h"
 #import "Course_increaseVideoSubView.h"
+#import "Course_lostFat.h"//减脂
+#import "Course_yiBingWorldView.h"//一冰的世界
+
 #import "BoldNavigationTitleView.h"
 
 #import "OrderPayViewController.h"
@@ -31,6 +34,9 @@
 @property (nonatomic, strong) Course_theoryView *theoryView;//理论
 @property (nonatomic, strong) Course_actOpeSubView *actualOperationView;//实操
 @property (nonatomic, strong) Course_increaseVideoSubView *increaseVideoView;//增值view
+@property (nonatomic, strong) Course_yiBingWorldView *yibingView;//一冰的世界
+@property (nonatomic, strong) Course_lostFat *loseFatView;//减脂
+
 @property (nonatomic, assign) BOOL isFromHomePage;//来自首页
 @property (nonatomic, assign) CourseVideoEnum curSeleVideoEnum;
 
@@ -57,7 +63,7 @@
     }
 }
 
-# pragma mark -- 国职理论 | 国职实操 | 增值视频
+# pragma mark -- 国职理论 | 国职实操 | 增值视频 | 减脂 | 一冰的世界
 - (void)chooseCourseType:(UIButton *)btn {
     
     if (btn.tag - 100 == _curSeleIndex) {
@@ -70,7 +76,8 @@
         UIButton *tmpBtn = (UIButton *)[_topBtnView viewWithTag:100+i];
         tmpBtn.selected = NO;
     }
-    _topBtnLine.left = btn.left + 4;
+    _topBtnLine.left = btn.left - 4;
+    _topBtnLine.width = btn.width + 8;
     switch (btn.tag) {
         case 100:{
             if (_theoryView == nil) {
@@ -90,6 +97,19 @@
             }
         }
             break;
+        case 103:{
+                if (_loseFatView == nil) {
+                    [self.mainScrollView addSubview:self.loseFatView];
+                }
+            }
+                break;
+        case 104:{
+            //一冰的世界
+                if (_yibingView == nil) {
+                    [self.mainScrollView addSubview:self.yibingView];
+                }
+            }
+                break;
             
         default:
             break;
@@ -143,6 +163,18 @@
             [self selectIndex:_curSeleVideoEnum];
         }
             break;
+        case Course_loseFatVideo:{
+            //减脂
+            [self.mainScrollView addSubview:self.loseFatView];
+            [self selectIndex:_curSeleVideoEnum];
+        }
+            break;
+        case Course_yibingWorldVideo:{
+               //一冰的世界
+               [self.mainScrollView addSubview:self.yibingView];
+               [self selectIndex:_curSeleVideoEnum];
+           }
+               break;
             
         default:
             
@@ -171,14 +203,30 @@
         [topView addSubview:cancelBtn];
     }
     
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < videoTypeArr.count; i++) {
+        QuestionModel *model = videoTypeArr[i];
+        if (model.name) {
+            [titles addObject:model.name];
+        }
+    }
+    
+    UIScrollView *btnScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, titleView.bottom, topView.width, topView.height - titleView.bottom)];
+    btnScrollView.showsHorizontalScrollIndicator = NO;
+    btnScrollView.showsVerticalScrollIndicator = NO;
+    btnScrollView.backgroundColor = [UIColor whiteColor];
+    [topView addSubview:btnScrollView];
 //    if (!self.isFromHomePageIncreaseCourse) {
-        NSArray *titles = @[@"国职理论",@"国职实操",@"进阶课程",@"减脂",@"一冰的世界",@""];
+//        NSArray *titles = @[@"国职理论",@"国职实操",@"进阶课程",@"减脂",@"一冰的世界"];
 //        if (self.isFromHomePageCountryProfession) {
 //            titles = @[@"国职理论",@"国职实操"];
 //        }
-        CGFloat wdtBtn = [UITool sizeOfStr:titles.firstObject andFont:Font(13) andMaxSize:CGSizeMake(kScreenWidth, 100) andLineBreakMode:NSLineBreakByCharWrapping].width;
         CGFloat coorX_btn = coorX;
         for (int i = 0; i < titles.count; i++) {
+            
+            CGFloat wdtBtn = [UITool sizeOfStr:titles[i] andFont:Font(13) andMaxSize:CGSizeMake(kScreenWidth, 100) andLineBreakMode:NSLineBreakByCharWrapping].width + 5;
+            
             UIButton *btn = [ButtonTool createButtonWithTitle:titles[i]
                                                    titleColor:k46Color
                                                     titleFont:Font(13)
@@ -192,15 +240,20 @@
                 btn.selected = YES;
             }
             
-            btn.frame = CGRectMake(coorX_btn, titleView.bottom+20, wdtBtn, 20);
-            [topView addSubview:btn];
+            btn.frame = CGRectMake(coorX_btn, 20, wdtBtn, 20);
+            [btnScrollView addSubview:btn];
             
             coorX_btn += wdtBtn + 25;
+            
+            if (i == titles.count - 1) {
+                [btnScrollView setContentSize:CGSizeMake(btn.right + 20, btnScrollView.height)];
+            }
         }
         
-        _topBtnLine = [[UIView alloc] initWithFrame:CGRectMake(coorX+4, titleView.bottom+20+20, wdtBtn-8, 3)];
+        CGFloat wdtBtn = [UITool sizeOfStr:titles[0] andFont:Font(13) andMaxSize:CGSizeMake(kScreenWidth, 100) andLineBreakMode:NSLineBreakByCharWrapping].width + 5;
+        _topBtnLine = [[UIView alloc] initWithFrame:CGRectMake(coorX-4, 20+20, wdtBtn + 8, 3)];
         _topBtnLine.backgroundColor = kOrangeColor;
-        [topView addSubview:_topBtnLine];
+        [btnScrollView addSubview:_topBtnLine];
 //    }
 //else {
 //        topView.height =  60;
@@ -222,7 +275,7 @@
 //            //首页进阶
 //            [_mainScrollView setContentSize:CGSizeMake(kScreenWidth, _mainScrollView.height)];
 //        }else {
-            [_mainScrollView setContentSize:CGSizeMake(kScreenWidth * 3, _mainScrollView.height)];
+            [_mainScrollView setContentSize:CGSizeMake(kScreenWidth * 5, _mainScrollView.height)];
 //        }
         
         
@@ -270,17 +323,46 @@
     if (!_increaseVideoView) {
         QuestionModel *model;
         if (videoTypeArr.count > 2) {
-            model = videoTypeArr.lastObject;
+            model = videoTypeArr[2];
         }
         
         CGFloat coorX = self.mainScrollView.width *2;
-//        if (self.isFromHomePageIncreaseCourse) {
-//            coorX = 0;
-//        }
         _increaseVideoView = [[Course_increaseVideoSubView alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
     }
     
     return _increaseVideoView;
+}
+
+//减脂视频
+- (Course_lostFat *)loseFatView {
+    if (!_loseFatView) {
+        
+        QuestionModel *model;
+        if (videoTypeArr.count > 3) {
+            model = videoTypeArr[3];
+        }
+        CGFloat coorX = self.mainScrollView.width *3;
+
+        _loseFatView = [[Course_lostFat alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+    }
+    
+    return _loseFatView;
+}
+
+//减脂视频
+- (Course_yiBingWorldView *)yibingView {
+    if (!_yibingView) {
+        
+        QuestionModel *model;
+        if (videoTypeArr.count > 4) {
+            model = videoTypeArr[4];
+        }
+        CGFloat coorX = self.mainScrollView.width *4;
+
+        _yibingView = [[Course_yiBingWorldView alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+    }
+    
+    return _yibingView;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

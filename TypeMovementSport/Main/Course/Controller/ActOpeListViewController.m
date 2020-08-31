@@ -156,6 +156,23 @@
    
 }
 
+- (UIView *)tableViewHeaderViewByCon:(NSString *)con {
+    UIView *headerView = [[UIView alloc] init];
+    
+    CGSize size = [UITool sizeOfStr:con andFont:Font(13) andMaxSize:CGSizeMake(kScreenWidth - 20, MAXFLOAT) andLineBreakMode:NSLineBreakByWordWrapping];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, kScreenWidth - 20, size.height)];
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.text = con;
+    label.font = Font(13);
+    label.textColor = k46Color;
+    [headerView addSubview:label];
+    
+    headerView.frame = CGRectMake(0, 0, kScreenWidth, label.bottom+10);
+    
+    return headerView;
+}
 #pragma mark -- 获取分页数据
 - (void)getVideoDataList {
     
@@ -178,6 +195,18 @@
                 }
             }
             
+            
+            if (strongSelf->_dataArr.count > 0) {
+                QuestionModel *model = strongSelf->_dataArr.firstObject;
+                
+                
+                if (model.parent && model.parent[@"introduce"]) {
+                    NSString *introduce = [NSString stringWithFormat:@"%@",model.parent[@"introduce"]];
+                    if (introduce.length > 0) {
+                        strongSelf->actOpeTable.tableHeaderView = [self tableViewHeaderViewByCon:introduce];
+                    }
+                }
+            }
             [strongSelf->actOpeTable reloadData];
         }else {
             [[CustomAlertView shareCustomAlertView] showTitle:nil content:dict[kMessage] buttonTitle:nil block:nil];

@@ -176,7 +176,7 @@
     CGFloat coorY = 25;
     CGFloat hgtItem = FIT_SCREEN_WIDTH(35) + 30;
     
-    for (int i = 0; i < titlesArr.count; i++) {
+    for (int i = 0; i < titlesArr.count - 2; i++) {
         
         if ( i >= 3  && i % 3 == 0) {
             coorY += hgtItem + 10;
@@ -317,8 +317,10 @@
 
 #pragma mark -- 支持我们
 - (void)supportUs {
-    NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@",@"1300415626"];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+     NSString *str = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@",@"1300415626"];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
 }
 
 #pragma mark -- 我的优惠券
