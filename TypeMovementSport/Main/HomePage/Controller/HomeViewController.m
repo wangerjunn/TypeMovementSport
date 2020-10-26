@@ -553,7 +553,7 @@ static NSString *kIsMultiple = @"isMultiple";
 
 #pragma mark -- 极简运动
 - (void)simpleSport {
-    [self loseFatAction];return;
+    
     [self displayTopBtnEvent:@"Course 极简运动" viewEnglishTitle:@"MinimalistSports" typeId:@"287"];
 }
 
@@ -731,7 +731,8 @@ static NSString *kIsMultiple = @"isMultiple";
 #pragma mark -- 更新app
 - (void)updateApp:(NSString *)updateUrl {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:updateUrl]]) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateUrl]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateUrl] options:@{} completionHandler:nil];
+        
     }
 }
 
@@ -739,7 +740,7 @@ static NSString *kIsMultiple = @"isMultiple";
 - (void)callServiceTell {
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:
-                                                [NSString stringWithFormat:@"tel://%@",@"15001338854"]]];
+                                                [NSString stringWithFormat:@"tel://%@",@"15001338854"]] options:@{}completionHandler:nil];
 }
 
 #pragma mark -- 获取首页接口数据

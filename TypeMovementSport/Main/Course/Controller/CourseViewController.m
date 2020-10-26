@@ -56,8 +56,29 @@
 
 - (void)selectIndex:(CourseVideoEnum)videoEnum {
     
-    _curSeleVideoEnum = videoEnum;
-    UIButton *btn = (UIButton *)[_topBtnView viewWithTag:videoEnum+100];
+//    _curSeleVideoEnum = videoEnum;
+    
+    NSInteger index = 0;
+    for (int i = 0; i < videoTypeArr.count; i++) {
+        QuestionModel *model = videoTypeArr[i];
+        if ([model.name isEqualToString:@"国职理论"] && videoEnum == Course_theoryVideo) {
+            index = i;
+            break;
+        }else if ([model.name isEqualToString:@"国职实操"] && videoEnum == Course_actOpeVideo) {
+            index = i;
+            break;
+        }else if ([model.name isEqualToString:@"进阶课程"] && videoEnum == Course_increaseVideo) {
+            index = i;
+            break;
+        }else if ([model.name isEqualToString:@"减脂"] && videoEnum == Course_theoryVideo) {
+           index = i;
+           break;
+        }else if ([model.name isEqualToString:@"一冰的世界"] && videoEnum == Course_yibingWorldVideo) {
+           index = i;
+           break;
+        }
+    }
+    UIButton *btn = (UIButton *)[_topBtnView viewWithTag:index+100];
     if (btn) {
         [self chooseCourseType:btn];
     }
@@ -78,42 +99,42 @@
     }
     _topBtnLine.left = btn.left - 4;
     _topBtnLine.width = btn.width + 8;
-    switch (btn.tag) {
-        case 100:{
-            if (_theoryView == nil) {
-                [self.mainScrollView addSubview:self.theoryView];
-            }
-        }
-            break;
-        case 101:{
-            if ( _actualOperationView == nil) {
-                [self.mainScrollView addSubview:self.actualOperationView];
-            }
-        }
-            break;
-        case 102:{
-            if (_increaseVideoView == nil) {
-                [self.mainScrollView addSubview:self.increaseVideoView];
-            }
-        }
-            break;
-        case 103:{
-                if (_loseFatView == nil) {
-                    [self.mainScrollView addSubview:self.loseFatView];
-                }
-            }
-                break;
-        case 104:{
-            //一冰的世界
-                if (_yibingView == nil) {
-                    [self.mainScrollView addSubview:self.yibingView];
-                }
-            }
-                break;
-            
-        default:
-            break;
-    }
+//    switch (btn.tag) {
+//        case 100:{
+//            if (_theoryView == nil) {
+//                [self.mainScrollView addSubview:self.theoryView];
+//            }
+//        }
+//            break;
+//        case 101:{
+//            if ( _actualOperationView == nil) {
+//                [self.mainScrollView addSubview:self.actualOperationView];
+//            }
+//        }
+//            break;
+//        case 102:{
+//            if (_increaseVideoView == nil) {
+//                [self.mainScrollView addSubview:self.increaseVideoView];
+//            }
+//        }
+//            break;
+//        case 103:{
+//                if (_loseFatView == nil) {
+//                    [self.mainScrollView addSubview:self.loseFatView];
+//                }
+//            }
+//                break;
+//        case 104:{
+//            //一冰的世界
+//                if (_yibingView == nil) {
+//                    [self.mainScrollView addSubview:self.yibingView];
+//                }
+//            }
+//                break;
+//
+//        default:
+//            break;
+//    }
     
     btn.selected = YES;
     [self.mainScrollView setContentOffset:CGPointMake(kScreenWidth*(btn.tag-100), 0) animated:NO];
@@ -150,39 +171,98 @@
     
     [self.view addSubview:self.mainScrollView];
     
-    switch (_curSeleVideoEnum) {
-        case Course_increaseVideo:{
-            //进阶课程
-            [self.mainScrollView addSubview:self.increaseVideoView];
-            [self selectIndex:_curSeleVideoEnum];
-        }
-            break;
-        case Course_actOpeVideo:{
-            //国职实操
-            [self.mainScrollView addSubview:self.actualOperationView];
-            [self selectIndex:_curSeleVideoEnum];
-        }
-            break;
-        case Course_loseFatVideo:{
-            //减脂
-            [self.mainScrollView addSubview:self.loseFatView];
-            [self selectIndex:_curSeleVideoEnum];
-        }
-            break;
-        case Course_yibingWorldVideo:{
-               //一冰的世界
-               [self.mainScrollView addSubview:self.yibingView];
-               [self selectIndex:_curSeleVideoEnum];
-           }
-               break;
-            
-        default:
-            
-            //国职理论
-             [self.mainScrollView addSubview:self.theoryView];
-            break;
-    }
+    for (int i = 0; i < videoTypeArr.count; i++) {
 
+        [self addSubViewByIndex:i];
+//        CGRect rect = CGRectMake(self.mainScrollView.width*i, 0, self.mainScrollView.width, self.mainScrollView.height);
+//        QuestionModel *model = videoTypeArr[i];
+//        if ([model.name isEqualToString:@"国职理论"]) {
+//            self.theoryView = [[Course_theoryView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
+//            [self.mainScrollView addSubview:self.theoryView];
+//        }else if ([model.name isEqualToString:@"国职实操"]) {
+//            self.actualOperationView = [[Course_actOpeSubView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
+//            [self.mainScrollView addSubview:self.theoryView];
+//        }else if ([model.name isEqualToString:@"进阶课程"]) {
+//            self.increaseVideoView = [[Course_increaseVideoSubView alloc]initWithFrame:rect videoTypeId:model?model.id:0];
+//            [self.mainScrollView addSubview:self.increaseVideoView];
+//        }else if ([model.name isEqualToString:@"减脂"]) {
+//            self.loseFatView = [[Course_lostFat alloc]initWithFrame:rect videoTypeId:model?model.id:0];
+//            [self.mainScrollView addSubview:self.loseFatView];
+//        }else if ([model.name isEqualToString:@"一冰的世界"]) {
+//            self.yibingView = [[Course_yiBingWorldView alloc]initWithFrame:rect videoTypeId:model?model.id:0];
+//            [self.mainScrollView addSubview:self.yibingView];
+//        }
+    }
+//    switch (_curSeleVideoEnum) {
+//        case Course_increaseVideo:{
+//            //进阶课程
+//
+//            [self.mainScrollView addSubview:self.increaseVideoView];
+//            [self selectIndex:_curSeleVideoEnum];
+//        }
+//            break;
+//        case Course_actOpeVideo:{
+//            //国职实操
+//            [self.mainScrollView addSubview:self.actualOperationView];
+//            [self selectIndex:_curSeleVideoEnum];
+//        }
+//            break;
+//        case Course_loseFatVideo:{
+//            //减脂
+//            [self.mainScrollView addSubview:self.loseFatView];
+//            [self selectIndex:_curSeleVideoEnum];
+//        }
+//            break;
+//        case Course_yibingWorldVideo:{
+//               //一冰的世界
+//               [self.mainScrollView addSubview:self.yibingView];
+//               [self selectIndex:_curSeleVideoEnum];
+//           }
+//               break;
+//
+//        default:
+//
+//            //国职理论
+//             [self.mainScrollView addSubview:self.theoryView];
+//            break;
+//    }
+
+}
+
+- (void)addSubViewByIndex:(NSInteger)index {
+    CGRect rect = CGRectMake(self.mainScrollView.width*index, 0, self.mainScrollView.width, self.mainScrollView.height);
+    QuestionModel *model = videoTypeArr[index];
+    if ([model.name isEqualToString:@"国职理论"]) {
+        if (self.theoryView == nil) {
+            self.theoryView = [[Course_theoryView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:self.theoryView];
+        }
+        
+    }else if ([model.name isEqualToString:@"国职实操"]) {
+        if (self.actualOperationView == nil) {
+            self.actualOperationView = [[Course_actOpeSubView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:self.actualOperationView];
+        }
+        
+    }else if ([model.name isEqualToString:@"进阶课程"]) {
+        if (self.increaseVideoView == nil) {
+            self.increaseVideoView = [[Course_increaseVideoSubView alloc]initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:self.increaseVideoView];
+        }
+        
+    }else if ([model.name isEqualToString:@"减脂"]) {
+        if (self.loseFatView == nil) {
+            self.loseFatView = [[Course_lostFat alloc]initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:self.loseFatView];
+        }
+        
+    }else if ([model.name isEqualToString:@"一冰的世界"]) {
+        if (self.yibingView == nil) {
+            self.yibingView = [[Course_yiBingWorldView alloc]initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:self.yibingView];
+        }
+        
+    }
 }
 
 //创建顶部按钮view
@@ -290,80 +370,80 @@
     return _mainScrollView;
 }
 
-//国职理论
-- (Course_theoryView *)theoryView {
-    if (!_theoryView) {
-        QuestionModel *model;
-        if (videoTypeArr.count > 0) {
-            model = videoTypeArr.firstObject;
-        }
-        
-        _theoryView = [[Course_theoryView alloc]initWithFrame:CGRectMake(0, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
-    }
-    
-    return _theoryView;
-}
-
-//国职实操
-- (Course_actOpeSubView *)actualOperationView {
-    if (!_actualOperationView) {
-        
-        QuestionModel *model;
-        if (videoTypeArr.count > 1) {
-            model = videoTypeArr[1];
-        }
-        _actualOperationView = [[Course_actOpeSubView alloc]initWithFrame:CGRectMake(self.mainScrollView.width, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
-    }
-    
-    return _actualOperationView;
-}
-
-//增值视频
-- (Course_increaseVideoSubView *)increaseVideoView {
-    if (!_increaseVideoView) {
-        QuestionModel *model;
-        if (videoTypeArr.count > 2) {
-            model = videoTypeArr[2];
-        }
-        
-        CGFloat coorX = self.mainScrollView.width *2;
-        _increaseVideoView = [[Course_increaseVideoSubView alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
-    }
-    
-    return _increaseVideoView;
-}
-
-//减脂视频
-- (Course_lostFat *)loseFatView {
-    if (!_loseFatView) {
-        
-        QuestionModel *model;
-        if (videoTypeArr.count > 3) {
-            model = videoTypeArr[3];
-        }
-        CGFloat coorX = self.mainScrollView.width *3;
-
-        _loseFatView = [[Course_lostFat alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
-    }
-    
-    return _loseFatView;
-}
-
-//减脂视频
-- (Course_yiBingWorldView *)yibingView {
-    if (!_yibingView) {
-        
-        QuestionModel *model;
-        if (videoTypeArr.count > 4) {
-            model = videoTypeArr[4];
-        }
-        CGFloat coorX = self.mainScrollView.width *4;
-
-        _yibingView = [[Course_yiBingWorldView alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
-    }
-    
-    return _yibingView;
-}
+////国职理论
+//- (Course_theoryView *)theoryView {
+//    if (!_theoryView) {
+//        QuestionModel *model;
+//        if (videoTypeArr.count > 0) {
+//            model = videoTypeArr.firstObject;
+//        }
+//
+//        _theoryView = [[Course_theoryView alloc]initWithFrame:CGRectMake(0, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+//    }
+//
+//    return _theoryView;
+//}
+//
+////国职实操
+//- (Course_actOpeSubView *)actualOperationView {
+//    if (!_actualOperationView) {
+//
+//        QuestionModel *model;
+//        if (videoTypeArr.count > 1) {
+//            model = videoTypeArr[1];
+//        }
+//        _actualOperationView = [[Course_actOpeSubView alloc]initWithFrame:CGRectMake(self.mainScrollView.width, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+//    }
+//
+//    return _actualOperationView;
+//}
+//
+////增值视频
+//- (Course_increaseVideoSubView *)increaseVideoView {
+//    if (!_increaseVideoView) {
+//        QuestionModel *model;
+//        if (videoTypeArr.count > 2) {
+//            model = videoTypeArr[2];
+//        }
+//
+//        CGFloat coorX = self.mainScrollView.width *2;
+//        _increaseVideoView = [[Course_increaseVideoSubView alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+//    }
+//
+//    return _increaseVideoView;
+//}
+//
+////减脂视频
+//- (Course_lostFat *)loseFatView {
+//    if (!_loseFatView) {
+//
+//        QuestionModel *model;
+//        if (videoTypeArr.count > 3) {
+//            model = videoTypeArr[3];
+//        }
+//        CGFloat coorX = self.mainScrollView.width *3;
+//
+//        _loseFatView = [[Course_lostFat alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+//    }
+//
+//    return _loseFatView;
+//}
+//
+////减脂视频
+//- (Course_yiBingWorldView *)yibingView {
+//    if (!_yibingView) {
+//
+//        QuestionModel *model;
+//        if (videoTypeArr.count > 4) {
+//            model = videoTypeArr[4];
+//        }
+//        CGFloat coorX = self.mainScrollView.width *4;
+//
+//        _yibingView = [[Course_yiBingWorldView alloc]initWithFrame:CGRectMake(coorX, 0, self.mainScrollView.width, self.mainScrollView.height) videoTypeId:model?model.id:0];
+//    }
+//
+//    return _yibingView;
+//}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     NSInteger index = _mainScrollView.contentOffset.x / kScreenWidth;
