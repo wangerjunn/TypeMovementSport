@@ -2987,7 +2987,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = TVSTTC2NK6;
+				DEVELOPMENT_TEAM = 99N6PBC5W3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/Alipay",
@@ -3012,7 +3012,7 @@
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/WeChatSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.salesvalley.tcpapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xingdong.hrmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b3218a-6fe8-4d00-884a-a1f4ac225a0b";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3030,7 +3030,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = TVSTTC2NK6;
+				DEVELOPMENT_TEAM = 99N6PBC5W3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/Alipay",
@@ -3055,7 +3055,7 @@
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/TypeMovementSport/3rd/WeChatSDK1.8.3",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.salesvalley.tcpapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xingdong.hrmp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "55b3218a-6fe8-4d00-884a-a1f4ac225a0b";
 				PROVISIONING_PROFILE_SPECIFIER = "";

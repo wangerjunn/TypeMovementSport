@@ -26,7 +26,10 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-        UIView *conView = [[UIView alloc] init];
+        UIImageView *conView = [[UIImageView alloc] init];
+        conView.contentMode = UIViewContentModeScaleAspectFill;
+        conView.userInteractionEnabled = YES;
+        conView.tag = 10010;
 //        CGFloat coorX = FIT_SCREEN_WIDTH(20);
         CGFloat coorX = 10;
         conView.frame = CGRectMake(coorX,0,kScreenWidth-coorX*2,FIT_SCREEN_HEIGHT(105));
@@ -181,6 +184,18 @@
             self.attachView.hidden = NO;
         }
     }
+    
+    UIImageView *conView = (UIImageView *)[self.contentView viewWithTag:10010];
+    if (!([model.backImg containsString:@"null"] && model.backImg.length > 0)) {
+        [conView sd_setImageWithURL:[NSURL URLWithString:model.backImg] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            conView.image = image;
+            conView.layer.cornerRadius = 15;
+            conView.layer.masksToBounds = YES;
+        }];
+    }else {
+        conView.backgroundColor = [UIColor whiteColor];
+    }
+    
 }
 
 - (void)displayAttachContent {

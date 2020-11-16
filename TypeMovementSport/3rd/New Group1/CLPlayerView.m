@@ -111,7 +111,25 @@ typedef NS_ENUM(NSInteger, CLPlayerState) {
 /**statusBar*/
 - (UIView *) statusBar{
     if (_statusBar == nil){
-        _statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+        if (@available(iOS 13.0, *)) {
+
+            // iOS 13  弃用keyWindow属性  从所有windowl数组中取
+
+            _statusBar = [[UIView alloc]initWithFrame:[UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarFrame] ;
+
+            [[UIApplication sharedApplication].keyWindow addSubview:_statusBar];
+
+         
+
+        }else{
+
+         
+            _statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+
+           
+        }
+        
+        
     }
     return _statusBar;
 }

@@ -231,7 +231,11 @@
 
 - (void)addSubViewByIndex:(NSInteger)index {
     CGRect rect = CGRectMake(self.mainScrollView.width*index, 0, self.mainScrollView.width, self.mainScrollView.height);
-    QuestionModel *model = videoTypeArr[index];
+    QuestionModel *model;
+    if (videoTypeArr.count > index) {
+        model = videoTypeArr[index];
+    }
+    
     if ([model.name isEqualToString:@"国职理论"]) {
         if (self.theoryView == nil) {
             self.theoryView = [[Course_theoryView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
