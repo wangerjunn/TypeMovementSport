@@ -446,13 +446,13 @@ static NSString *kIsMultiple = @"isMultiple";
                 return;
             }
             NSDictionary *dicInfo = weakSelf.dynamiacArr[indexPath.section - 2];
-            NSString *tmpId = [NSString stringWithFormat:@"%@",dicInfo[@"id"]?dicInfo[@"id"]:@""];
-            if ([tmpId isEqualToString:@"39"] || [tmpId isEqualToString:@"44"]) {
+//            NSString *tmpId = [NSString stringWithFormat:@"%@",dicInfo[@"id"]?dicInfo[@"id"]:@""];
+//            if ([tmpId isEqualToString:@"39"] || [tmpId isEqualToString:@"44"]) {
                 NSArray *dataArr = dicInfo[@"videoList"];
-                if (dataArr.count > index) {
+                if (dataArr && (dataArr.count > index)) {
                      [weakSelf playerView:dataArr[index]];
                 }
-            }
+//            }
         }
     };
     return cell;
