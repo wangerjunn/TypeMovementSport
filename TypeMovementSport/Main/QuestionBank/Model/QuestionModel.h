@@ -76,7 +76,8 @@
 @property (nonatomic, copy) NSArray *videoList;//视频列表
 @property (nonatomic, assign) BOOL isOnline;//即将上线 0:即将上线，1：已经上线
 @property (nonatomic, copy) NSString *pdf;//购买全套课程后赠送PDF文档
-
+@property (nonatomic, copy) NSString *backImg;//cell背景图
+@property (nonatomic, copy) NSString *iconImg;//图标图片
 @property (nonatomic, assign) BOOL isPurchase;//弹框列表时使用
 @property (nonatomic, strong) NSDictionary *parent;
 

@@ -10,6 +10,7 @@
 #import "QuestionModel.h"
 
 @interface SimulatedExerciseCell : UITableViewCell
+
 /**试题标题*/
 @property (nonatomic, strong) UILabel *titleLabel;
 /**试题级别价格*/
