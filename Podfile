@@ -17,7 +17,7 @@ pod "AMapSearch"
 pod "SVProgressHUD"
 pod "JSONKit"
 pod 'WechatOpenSDK'
-pod 'EaseUI'
+#pod 'EaseUI'
 #pod 'UMengUShare/UI'
 
 # 集成新浪微博
@@ -33,7 +33,7 @@ pod 'UMCShare/Social/Sina'
 
 
 #pod 'UMCAnalytics'
-pod 'UMCCommon'
+pod 'UMCCommon', '~> 7.1.3'
 #pod 'UMCPush'
 #pod 'UMCSecurityPlugins'
 

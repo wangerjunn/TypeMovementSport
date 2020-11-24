@@ -33,7 +33,7 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SVProgressHUD (2.2.5)
-  - UMCCommon (7.1.1)
+  - UMCCommon (7.1.3)
   - UMCShare/Core (6.9.10):
     - UMCCommon
   - UMCShare/Social/ReducedSina (6.9.10):
@@ -59,7 +59,7 @@ DEPENDENCIES:
   - SDWebImage
   - SDWebImage/GIF
   - SVProgressHUD
-  - UMCCommon
+  - UMCCommon (~> 7.1.3)
   - UMCShare/Social/Sina
   - WechatOpenSDK
 
@@ -98,10 +98,10 @@ SPEC CHECKSUMS:
   MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  UMCCommon: f455f92c125342e360d6ad9eafe484945351eeb5
+  UMCCommon: 0cb2629b93884531621100ed66ff2bca8b181f1f
   UMCShare: a4a95fbdd61ecce5b6751d8c9ed9b519e80fcbc9
   WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
 
-PODFILE CHECKSUM: 82e97528d5778c24f4ac1276ca87bb1b2b611aa9
+PODFILE CHECKSUM: 7628cb68d474de395069b1200586b339df290cf7
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.rc.1
