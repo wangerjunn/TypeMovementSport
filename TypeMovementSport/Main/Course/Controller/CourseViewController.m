@@ -172,8 +172,19 @@
     [self.view addSubview:self.mainScrollView];
     
     for (int i = 0; i < videoTypeArr.count; i++) {
-
-        [self addSubViewByIndex:i];
+        
+        QuestionModel *model = videoTypeArr[i];
+        
+        CGRect rect = CGRectMake(self.mainScrollView.width*i, 0, self.mainScrollView.width, self.mainScrollView.height);
+        if (model.id == 34) {
+            self.theoryView = [[Course_theoryView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:self.theoryView];
+        }else {
+            Course_actOpeSubView *view = [[Course_actOpeSubView alloc] initWithFrame:rect videoTypeId:model?model.id:0];
+            [self.mainScrollView addSubview:view];
+        }
+        
+//        [self addSubViewByIndex:i];
 //        CGRect rect = CGRectMake(self.mainScrollView.width*i, 0, self.mainScrollView.width, self.mainScrollView.height);
 //        QuestionModel *model = videoTypeArr[i];
 //        if ([model.name isEqualToString:@"国职理论"]) {

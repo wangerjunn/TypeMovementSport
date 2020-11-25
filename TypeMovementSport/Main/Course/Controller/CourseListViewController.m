@@ -313,6 +313,11 @@
                                 orderName:strongSelf->_viewTitle
                               orderAmount:strongSelf->_totalPrice];
     };
+    
+    
+    if (![self.questionModel.pdf isNotEmpty]) {
+        [purchase isShowPdfTips:NO];
+    }
     [purchase show];
 }
 

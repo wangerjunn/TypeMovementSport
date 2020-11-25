@@ -14,5 +14,8 @@
 @property (nonatomic, copy) void (^ PurchaseTotalVideoBlock)(void);//购买整套视频
 - (instancetype)initPurchaseViewByTitle:(NSString *)viewTitle dataArr:(NSArray *)dataArr purchaseBlock:(void (^)(NSArray *seleCon, CGFloat totalMoney))block;
 
+- (void)isShowPdfTips:(BOOL)isShow;
+
 - (void)show;
+
 @end

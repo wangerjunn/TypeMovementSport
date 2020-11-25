@@ -300,6 +300,13 @@
     [self removeFromSuperview];
 }
 
+- (void)isShowPdfTips:(BOOL)isShow {
+    if (!isShow) {
+        self.attachView.hidden = YES;
+        [self.attachView removeFromSuperview];
+    }
+}
+
 - (void)show {
     [[UIApplication sharedApplication].keyWindow addSubview:self];
 }

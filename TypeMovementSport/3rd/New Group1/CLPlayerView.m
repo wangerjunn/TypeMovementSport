@@ -849,6 +849,7 @@ typedef NS_ENUM(NSInteger, CLPlayerState) {
 - (void)originalscreen{
     _isFullScreen = NO;
     _isUserTapMaxButton = NO;
+    
     [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait animated:NO];
     [self setStatusBarHidden:_statusBarHiddenState];
     if (_isLandscape) {
