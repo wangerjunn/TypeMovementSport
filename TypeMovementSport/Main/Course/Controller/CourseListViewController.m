@@ -248,7 +248,7 @@
                     [weakSelf displayPlayView:videoModel shareInfo:dic index:indexPath.item];
                 }else {
                     //未分享过，需要进行先分享
-                    NSString *con = [NSString stringWithFormat:@"将此链接分享给微信好友、朋友圈、微博，可免费观看课件前%ld分钟",[videoModel.attemptSecond integerValue] / 60];
+                    NSString *con = [NSString stringWithFormat:@"将此链接分享给微信好友、朋友圈、微博，可免费观看课件前%d分钟",[videoModel.attemptSecond integerValue] / 60];
                     [[CustomAlertView shareCustomAlertView] showTitle:nil content:con leftButtonTitle:nil rightButtonTitle:@"分享" block:^(NSInteger index) {
                         if (index == 1) {
                             //去分享
