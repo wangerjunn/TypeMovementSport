@@ -80,6 +80,7 @@
 @property (nonatomic, copy) NSString *iconImg;//图标图片
 @property (nonatomic, assign) BOOL isPurchase;//弹框列表时使用
 @property (nonatomic, strong) NSDictionary *parent;
+@property (nonatomic, strong) NSString *introduceDown;//提示文字
 
 @end
 

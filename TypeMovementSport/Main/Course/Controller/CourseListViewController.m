@@ -18,6 +18,7 @@
 #import "CourseHeaderCommonView.h"
 #import "EmptyView.h"
 #import "PurchaseListView.h"
+#import "CourseListFooterView.h"
 
 //model
 #import "QuestionModel.h"
@@ -25,7 +26,7 @@
 #import "UserModel.h"
 
 @interface CourseListViewController () <UICollectionViewDelegate,
-    UICollectionViewDataSource> {
+    UICollectionViewDataSource,UICollectionViewDelegateFlowLayout> {
         UICollectionView *courseCollection;
         NSMutableArray *_dataArr;
         Course_thirdDataView *videoListView;
@@ -76,6 +77,7 @@
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.minimumLineSpacing = 15;
+//    layout.footerReferenceSize = CGSizeMake(kScreenWidth - 30, 80);
 //    layout.minimumInteritemSpacing = 15;
     layout.sectionInset = UIEdgeInsetsMake(10, FIT_SCREEN_WIDTH(20), 10, FIT_SCREEN_WIDTH(20));
 //    layout.headerReferenceSize = CGSizeMake(kScreenWidth, 60);
@@ -88,7 +90,7 @@
     [self.view addSubview:courseCollection];
     
     [courseCollection registerClass:[Course_SecondLevelCell class] forCellWithReuseIdentifier:@"cell"];
-    
+    [courseCollection registerClass:[CourseListFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
     
     UIImageView *img_purchase = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth - 100, kScreenHeight - 100 - kNavigationBarHeight, 90, 90)];
     img_purchase.image = [UIImage imageNamed:@"general_purchase"];
@@ -127,6 +129,36 @@
     return cell;
     
 }
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    
+    if ([self.questionModel.introduceDown isNotEmpty]) {
+        CGSize size = [UITool sizeOfStr:self.questionModel.introduceDown andFont:[UIFont systemFontOfSize:14] andMaxSize:CGSizeMake(kScreenWidth-30, MAXFLOAT) andLineBreakMode:NSLineBreakByCharWrapping];
+        
+        return size;
+    }
+    
+    return CGSizeZero;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reusableview = nil;
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        
+        CourseListFooterView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"footer" forIndexPath:indexPath];
+        
+        if (self.questionModel.introduceDown) {
+            [footer setText:self.questionModel.introduceDown];
+        }else {
+            [footer setText:@""];
+        }
+        return footer;
+    }
+    
+    return reusableview;
+}
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
