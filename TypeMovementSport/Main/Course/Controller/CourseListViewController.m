@@ -133,8 +133,12 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
     
     if ([self.questionModel.introduceDown isNotEmpty]) {
-        CGSize size = [UITool sizeOfStr:self.questionModel.introduceDown andFont:[UIFont systemFontOfSize:14] andMaxSize:CGSizeMake(kScreenWidth-30, MAXFLOAT) andLineBreakMode:NSLineBreakByCharWrapping];
         
+        CGSize size = [UITool sizeOfStr:self.questionModel.introduceDown andFont:[UIFont systemFontOfSize:15] andMaxSize:CGSizeMake(kScreenWidth-30, MAXFLOAT) andLineBreakMode:NSLineBreakByCharWrapping];
+        
+        if (size.height < 80) {
+            return CGSizeMake(size.width, 80);
+        }
         return size;
     }
     
@@ -148,7 +152,7 @@
         
         CourseListFooterView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"footer" forIndexPath:indexPath];
         
-        if (self.questionModel.introduceDown) {
+        if ([self.questionModel.introduceDown isNotEmpty]) {
             [footer setText:self.questionModel.introduceDown];
         }else {
             [footer setText:@""];

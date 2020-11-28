@@ -18,14 +18,13 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-//        self.backgroundColor = [UIColor whiteColor];
         
         [self addSubview:self.conLabel];
         
         [self.conLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(@15);
+            make.left.equalTo(@25);
             make.right.equalTo(self).offset(-15);
-            make.top.equalTo(self);
+            make.top.equalTo(@15);
             make.bottom.equalTo(self).offset(-10);
         }];
     }
