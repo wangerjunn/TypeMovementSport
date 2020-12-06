@@ -578,7 +578,7 @@ static NSString *kIsMultiple = @"isMultiple";
 
 #pragma mark -- 功能性训练
 - (void)funcTraining {
-    [self displayTopBtnEvent:@"Course 功能性训练" viewEnglishTitle:@"FunctionalTraining" typeId:@"291"];
+    [self displayTopBtnEvent:@"Course 减脂塑型" viewEnglishTitle:@"FunctionalTraining" typeId:@"291"];
 }
 
 - (void)displayTopBtnEvent:(NSString *)viewTitle viewEnglishTitle:(NSString *)viewEnglishTitle typeId:(NSString *)typeId {
