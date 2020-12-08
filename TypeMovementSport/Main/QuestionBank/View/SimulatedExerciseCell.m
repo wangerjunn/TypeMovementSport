@@ -40,8 +40,8 @@
         [self.contentView addSubview:conView];
         
         self.icon = [[UIImageView alloc] initWithFrame:CGRectMake(FIT_SCREEN_WIDTH(18), FIT_SCREEN_HEIGHT(11), FIT_SCREEN_WIDTH(75), FIT_SCREEN_HEIGHT(85))];
+        self.icon.contentMode = UIViewContentModeScaleAspectFit;
         [conView addSubview:self.icon];
-        
         self.titleLabel = [LabelTool createLableWithTextColor:k46Color font:Font(20)];
         self.titleLabel.frame = CGRectMake(self.icon.right+coorX, FIT_SCREEN_HEIGHT(25), conView.width - self.icon.right - coorX, 25);
         self.titleLabel.numberOfLines = 0;
