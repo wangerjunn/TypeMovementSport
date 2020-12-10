@@ -566,7 +566,7 @@ static NSString *kIsMultiple = @"isMultiple";
 
 #pragma mark -- 精品课程
 - (void)excellentCourse {
-    [self displayTopBtnEvent:@"Course 精品课程" viewEnglishTitle:@"ExcellentCourse" typeId:@"289"];
+    [self displayTopBtnEvent:@"Course 公益课包" viewEnglishTitle:@"ExcellentCourse" typeId:@"289"];
 }
 
 

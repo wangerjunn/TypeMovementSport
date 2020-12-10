@@ -20,9 +20,9 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>精品课程</string>
+		<string>公益课包</string>
 		<key>icon</key>
-		<string>HP_jpkc</string>
+		<string>HP_gykb</string>
 		<key>action</key>
 		<string>excellentCourse</string>
 	</dict>
