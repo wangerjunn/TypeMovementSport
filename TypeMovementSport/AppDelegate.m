@@ -73,7 +73,7 @@ void uncaughtExceptionHandler(NSException*exception){
         [WeiboSDK registerApp:SINA_APPKEY];
         
         // 注册微信
-        [WXApi registerApp:WEICHAT_APPID universalLink:@""];
+        [WXApi registerApp:WEICHAT_APPID universalLink:@"https://test.xingdongsport.com/apple-app-site-association"];
         
         //注册环信
         EMOptions *options = [EMOptions optionsWithAppkey:EM_AppKey];
@@ -353,7 +353,9 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     return [WXApi handleOpenURL:url delegate:self] || [WeiboSDK handleOpenURL:url delegate:self];
     
 }
-
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void(^)(NSArray<id<UIUserActivityRestoring>> * __nullable restorableObjects))restorationHandler {
+    return [WXApi handleOpenUniversalLink:userActivity delegate:self];
+}
 #pragma mark -- 微博回调
 - (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
     

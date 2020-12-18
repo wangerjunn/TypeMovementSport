@@ -203,9 +203,7 @@
         case 1000:
         {
             if (![WXApi isWXAppInstalled]) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您未下载微信客户端，无法分享到微信！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                alert.tag = 103;
-                [alert show];
+                [self showAlertTipsByContent:@"您未下载微信客户端，无法分享到微信！" tag:103];
                 return;
             }
             
@@ -215,9 +213,7 @@
         case 1001:
         {
             if(![WXApi isWXAppInstalled]){
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您未下载微信客户端，无法分享到微信！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                alert.tag = 103;
-                [alert show];
+                [self showAlertTipsByContent:@"您未下载微信客户端，无法分享到微信！" tag:103];
                 return;
             }
             [self shareToPyq];
@@ -227,9 +223,7 @@
         {
 
             if(![WeiboSDK isWeiboAppInstalled]){
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您未下载新浪微博客户端，无法分享到微博！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                alert.tag = 101;
-                [alert show];
+                [self showAlertTipsByContent:@"您未下载新浪微博客户端，无法分享到微博！" tag:101];
                 return;
             }
 
@@ -242,6 +236,21 @@
             break;
     }
     [self removeShareView];
+}
+
+- (void)showAlertTipsByContent:(NSString *)content tag:(NSInteger)tag {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:content preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       
+    }];
+    [alertController addAction:okAction];
+    
+    [alertController addAction: [UIAlertAction actionWithTitle:@"取消" style: UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    
+    [self.viewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)shareToWx {
