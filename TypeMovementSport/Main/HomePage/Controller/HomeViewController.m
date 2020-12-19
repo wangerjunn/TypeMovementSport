@@ -893,7 +893,11 @@ static NSString *kIsMultiple = @"isMultiple";
             if ([[dict[@"isExist"] stringValue] isEqualToString:@"1"]) {
                 //已注册企业
                 userModel.isRegisterEnterprise = YES;
-                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userModel];
+                //'archivedDataWithRootObject:' is deprecated: first deprecated in iOS 12.0 - Use +archivedDataWithRootObject:requiringSecureCoding:error: instead
+                
+                
+//                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userModel];
+                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userModel requiringSecureCoding:YES error:nil];
                 UserDefaultsSet(data, kUserModel);
                 RecruitmentViewController *recruitment = [[RecruitmentViewController alloc]init];
                 recruitment.hidesBottomBarWhenPushed = YES;

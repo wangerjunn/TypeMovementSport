@@ -635,7 +635,9 @@
     if (!error) {
         NSLog(@"退出成功");
     }
-    data = [NSKeyedArchiver archivedDataWithRootObject:userModel];
+//    data = [NSKeyedArchiver archivedDataWithRootObject:userModel];
+    data = [NSKeyedArchiver archivedDataWithRootObject:userModel requiringSecureCoding:YES error:nil];
+
     [userDefaults setObject:data forKey:kUserModel];
     
     [userDefaults removeObjectForKey:@"teacherId"];

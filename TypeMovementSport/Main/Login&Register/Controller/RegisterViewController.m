@@ -348,8 +348,9 @@ static int countdown = 60;
             model.token_type = authDic[@"token_type"];
             model.isLogin = YES;
             
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
-            
+//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model requiringSecureCoding:YES error:nil];
+
             UserDefaultsSet(data, kUserModel);
             [[NSUserDefaults standardUserDefaults] synchronize];
             
